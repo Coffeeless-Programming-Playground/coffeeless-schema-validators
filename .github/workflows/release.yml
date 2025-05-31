@@ -51,12 +51,12 @@ jobs:
           git push origin "v${PACKAGE_VERSION}"
 
       - name: Generate changelog
-        if: env.EXISTS == 'false'
-        uses: requarks/changelog-action@v1
+        uses: TriPSs/conventional-changelog-action@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag: "v${{ env.PACKAGE_VERSION }}"
-          output: CHANGELOG.md
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          output-file: CHANGELOG.md
+          skip-commit: false
+          tag-prefix: ""
 
       - name: Create GitHub Release
         if: env.EXISTS == 'false'
@@ -69,9 +69,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
       - name: Build package
+        if: env.EXISTS == 'false'
         run: npm run build --if-present
 
       - name: Publish to npm
+        if: env.EXISTS == 'false'
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
