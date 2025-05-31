@@ -1,1 +1,7 @@
-console.log("Live is good without coffee!")
+console.log('Life is good without coffee!')
+
+function myFunction() {
+  console.log(1)
+}
+
+myFunction()
