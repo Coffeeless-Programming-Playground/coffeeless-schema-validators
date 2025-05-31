@@ -6,7 +6,7 @@ import { ChildInputValidator, InputValidator, ValidationSchema } from '@protocol
  */
 export class CompositeValidator<T = any> implements InputValidator<T> {
   private readonly validators: ChildInputValidator[] = []
-  private readonly errors: Error[] = []
+  private errors: Error[] = []
   private fail: boolean = false
 
   constructor(validationSchema: ValidationSchema<T>) {
@@ -36,6 +36,7 @@ export class CompositeValidator<T = any> implements InputValidator<T> {
    * @returns Error[] | undefined
    */
   validate(input: T): Error[] | undefined {
+    this.errors = []
     for (const validator of this.validators) {
       const error = validator.validate(input) as Error
       if (this.fail && error) {

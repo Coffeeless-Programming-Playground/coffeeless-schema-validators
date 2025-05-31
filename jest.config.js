@@ -1,9 +1,21 @@
 module.exports = {
   roots: ['<rootDir>/src'],
   collectCoverageFrom: [
-    '<rootDir>/src/**/*.(ts,tsx)',
-    '!**/*d.ts'
+    '<rootDir>/src/**/*.(ts)',
+    '!**/*d.ts',
+    '!<rootDir>/src/validators/index.ts',
+    '!<rootDir>/src/errors/index.ts',
+    '!<rootDir>/src/protocols/index.ts',
+    '!<rootDir>/src/index.ts',
   ],
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
+    },
+  },
   coverageDirectory: 'coverage',
   moduleNameMapper: {
     '@errors/(.*)$': '<rootDir>/src/errors/$1',

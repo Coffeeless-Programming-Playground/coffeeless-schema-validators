@@ -5,7 +5,7 @@ import { ChildInputValidator } from '@protocols/child-input-validator'
  * An {@link ChildInputValidator} implementation to validate an email field.
  */
 export class EmailInputValidator extends ChildInputValidator {
-  private readonly regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/g
+  private readonly regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
   constructor(private readonly message?: string) {
     super()

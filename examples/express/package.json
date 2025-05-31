@@ -1,0 +1,19 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "This is an example of how to use coffeeless schema validators on an express application.",
+  "scripts": {
+    "start": "ts-node index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.7",
+    "@types/express": "^5.0.2",
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

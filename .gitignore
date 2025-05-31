@@ -2,3 +2,5 @@ node_modules
 dist
 coverage
 .vscode
+examples/**/*/package-lock.json
+coffeeless-schema-validator*
