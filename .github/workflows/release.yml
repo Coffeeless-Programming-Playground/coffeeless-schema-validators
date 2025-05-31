@@ -1,0 +1,76 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+  release:
+    types: [published]
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensures full Git history is available
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Read version from package.json
+        id: get_version
+        run: echo "PACKAGE_VERSION=$(node -p \"require('./package.json').version\")" >> $GITHUB_ENV
+
+      - name: Check if tag exists
+        id: check_tag
+        run: |
+          if git rev-parse "v${PACKAGE_VERSION}" >/dev/null 2>&1; then
+            echo "Tag v${PACKAGE_VERSION} already exists."
+            echo "EXISTS=true" >> $GITHUB_ENV
+          else
+            echo "Tag v${PACKAGE_VERSION} does not exist."
+            echo "EXISTS=false" >> $GITHUB_ENV
+          fi
+
+      - name: Create Git tag
+        if: env.EXISTS == 'false'
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git tag -a "v${PACKAGE_VERSION}" -m "Release v${PACKAGE_VERSION}"
+          git push origin "v${PACKAGE_VERSION}"
+
+      - name: Generate changelog
+        if: env.EXISTS == 'false'
+        uses: requarks/changelog-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: "v${{ env.PACKAGE_VERSION }}"
+          output: CHANGELOG.md
+
+      - name: Create GitHub Release
+        if: env.EXISTS == 'false'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: "v${{ env.PACKAGE_VERSION }}"
+          name: "v${{ env.PACKAGE_VERSION }}"
+          body_path: CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+      - name: Build package
+        run: npm run build --if-present
+
+      - name: Publish to npm
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

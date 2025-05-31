@@ -1,5 +1,5 @@
 module.exports = {
-  roots: ['<rootDir>/src'],
+  roots: ['<rootDir>/src', '<rootDir>/examples/express'],
   collectCoverageFrom: [
     '<rootDir>/src/**/*.(ts)',
     '!**/*d.ts',
@@ -7,6 +7,7 @@ module.exports = {
     '!<rootDir>/src/errors/index.ts',
     '!<rootDir>/src/protocols/index.ts',
     '!<rootDir>/src/index.ts',
+    '!<rootDir>/examples/express',
   ],
   coverageThreshold: {
     global: {

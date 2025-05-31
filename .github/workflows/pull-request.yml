@@ -3,31 +3,36 @@
 
 name: Node.js CI
 
-on: [pull_request]
+on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [18.x, 20.x, 22.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Build package and run tests
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm link
-    - run: cd examples/express
-    - run: npm install
-    - run: npm link npm link coffeeless-schema-validators
-    - run: cd ../..
-    - run: npm run test:ci
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensures full Git history is available
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      
+      - name: Install dependencies and build
+        run: |
+          npm ci
+          npm run build --if-present
+          npm link
+          cd examples/express
+          npm ci
+          npm link coffeeless-schema-validators
+          cd ../..
 
+      - name: Run unit and integration tests
+        run: npm run test:ci
