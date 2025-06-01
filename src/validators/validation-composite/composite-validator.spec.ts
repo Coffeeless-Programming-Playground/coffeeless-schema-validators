@@ -22,7 +22,7 @@ interface User {
   email: string
 }
 
-const initialUserData = {
+const initialUserData: User = {
   name: 'Diego',
   lasName: 'Salas',
   phoneNumber: '(415) 555-2671',

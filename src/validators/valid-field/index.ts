@@ -14,7 +14,7 @@ export class ValidFieldInputValidator extends ChildInputValidator {
 
   /**
    * Validates that a given input matches a regex pattern.
-   * @param input The input value to validate
+   * @param input The input value to validate.
    * @returns InvalidFieldError | undefined
    */
   validate(input: any): Error | undefined {

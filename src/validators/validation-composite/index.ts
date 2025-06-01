@@ -17,7 +17,7 @@ export class CompositeValidator<T = any> implements InputValidator<T> {
    * Loops through all key and values of the validation schema to append all input validators
    * to the validators list, setting their field to the key to which they map. The field
    * will be the property of a given object that will be validated.
-   * @param validationSchema The {@link ValidationSchema}
+   * @param validationSchema The {@link ValidationSchema}.
    */
   private addValidators(validationSchema: ValidationSchema<any>) {
     for (const [key, validators] of Object.entries(validationSchema)) {

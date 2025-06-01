@@ -13,7 +13,7 @@ export class InputValidatorBuilder {
   private constructor(private readonly validators: ChildInputValidator[]) {}
 
   /**
-   * Initialized the validator array to add validation rules
+   * Initialized the validator array to add validation rules.
    * @returns InputValidatorBuilder
    */
   static init(): InputValidatorBuilder {
@@ -21,7 +21,7 @@ export class InputValidatorBuilder {
   }
 
   /**
-   * Sets a field as required
+   * Sets a field as required.
    * @returns InputValidatorBuilder
    */
   required(message?: string): InputValidatorBuilder {
@@ -30,8 +30,8 @@ export class InputValidatorBuilder {
   }
 
   /**
-   * Sets the minimum length of characters a field should contain
-   * @param length number parameter. Represents minimum length of the input
+   * Sets the minimum length of characters a field should contain.
+   * @param length number parameter. Represents minimum length of the input.
    * @returns InputValidatorBuilder
    */
   min(minLength: number, message?: string): InputValidatorBuilder {
@@ -40,8 +40,8 @@ export class InputValidatorBuilder {
   }
 
   /**
-   * Verifies email being valid
-   * @param message An optional message to display error text
+   * Verifies email being valid.
+   * @param message An optional message to display error text.
    * @returns InputValidatorBuilder
    */
   email(message?: string): InputValidatorBuilder {
@@ -51,8 +51,8 @@ export class InputValidatorBuilder {
 
   /**
    * Validates that a given input matches a regex pattern.
-   * @param pattern A regex pattern {@link RegExp}
-   * @param message An optional message to display error text
+   * @param pattern A regex pattern {@link RegExp}.
+   * @param message An optional message to display error text.
    * @returns InputValidatorBuilder
    */
   valid(pattern: RegExp, message?: string): InputValidatorBuilder {
@@ -61,7 +61,7 @@ export class InputValidatorBuilder {
   }
 
   /**
-   * Return all of the validations as an array to be used for the validationSchema
+   * Return all of the validations as an array to be used for the validationSchema.
    * @returns ChildInputValidator array
    */
   build(): ChildInputValidator[] {

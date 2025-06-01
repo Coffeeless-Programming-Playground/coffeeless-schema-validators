@@ -13,7 +13,7 @@ export class EmailInputValidator extends ChildInputValidator {
 
   /**
    * Validates that the input field value is a valid email.
-   * @param input The input value to validate
+   * @param input The input value to validate.
    * @returns EmailFieldError | undefined
    */
   validate(input: any): Error | undefined {

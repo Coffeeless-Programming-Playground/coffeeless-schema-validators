@@ -10,8 +10,8 @@ export class RequiredFieldInputValidator extends ChildInputValidator {
   }
 
   /**
-   * Validates a input field is not empty
-   * @param input The input value to validate
+   * Validates a input field is not empty.
+   * @param input The input value to validate.
    * @returns RequiredFieldError | undefined
    */
   validate(input: any): Error | undefined {

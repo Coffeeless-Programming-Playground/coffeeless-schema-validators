@@ -14,7 +14,7 @@ export class MinLengthInputValidator extends ChildInputValidator {
 
   /**
    * Validates that the input value is equal or greater than the minLength.
-   * @param input The input value to validate
+   * @param input The input value to validate.
    * @returns MinLengthFieldError | undefined
    */
   validate(input: any): Error | undefined {

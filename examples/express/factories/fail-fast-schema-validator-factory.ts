@@ -1,8 +1,8 @@
-import { CompositeValidator, InputValidator, required } from 'coffeeless-schema-validators/dist'
+import { schemaValidator, InputValidator, required } from 'coffeeless-schema-validators/dist'
 import { User } from '../interfaces/user-interface'
 
 export const makeFailFastSchemaValidator = (): InputValidator => {
-  return new CompositeValidator<User>({
+  return schemaValidator<User>({
     name: required().min(2).build(),
     email: required().email().build(),
     phoneNumber: required()

@@ -7,7 +7,7 @@ export interface InputValidator<T = any> {
   /**
    * Validates a given input.
    * @param input An input given that will be validated according to the {@link ValidationSchema}.
-   * @returns Error | Error [] | undefined.
+   * @returns Error | Error [] | undefined
    */
   validate: (input: T) => Error | Error[] | undefined
 }
