@@ -7,4 +7,8 @@ The following validations will be supported:
 * Required field
 * Is email valid.
 * Minimum length.
-* Valid regex
+* Valid regex.
+* Unix timestamp expiration.
+* Min array length.
+* Min array elements length.
+* Array elements matching regex pattern.

@@ -22,6 +22,7 @@ module.exports = {
     '@errors/(.*)$': '<rootDir>/src/errors/$1',
     '@protocols/(.*)$': '<rootDir>/src/protocols/$1',
     '@validators/(.*)$': '<rootDir>/src/validators/$1',
+    '@constants/(.*)$': '<rootDir>/src/constants/$1',
   },
   transform: {
     '.+\\.ts$': 'ts-jest'

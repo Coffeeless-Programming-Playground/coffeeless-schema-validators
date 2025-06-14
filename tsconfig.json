@@ -16,7 +16,8 @@
     "paths": {
       "@errors/*": ["errors/*"],
       "@protocols/*": ["protocols/*"],
-      "@validators/*": ["validators/*"]
+      "@validators/*": ["validators/*"],
+      "@constants/*": ["constants/*"],
     },
     "strict": true
   },

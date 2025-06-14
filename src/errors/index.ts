@@ -1,4 +1,7 @@
 export * from './invalid-field-error'
+export * from './invalid-field-type-error'
 export * from './required-field-error'
 export * from './min-length-field-error'
+export * from './min-length-array.error'
 export * from './email-field-error'
+export * from './timestamp-expiration-error'
