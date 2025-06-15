@@ -2,6 +2,7 @@ import faker from '@faker-js/faker'
 import {
   ArrayElementsMatchPatternValidator,
   IsArrayValidator,
+  LengthArrayMatchesValidator,
   MinArrayElementsLengthValidator,
   MinLengthArrayValidator,
   RequiredFieldInputValidator,
@@ -96,7 +97,6 @@ describe('ArrayValidatorBuilder', () => {
   test('Should return ArrayElementsMatchPatternValidator with custom message', () => {
     const customErrorMessage = 'This field does not match regex pattern'
     const pattern = /^[0-1]/
-    const length = faker.datatype.number()
     const validations = ArrayValidatorBuilder.init()
       .elementsMatchPattern(pattern, customErrorMessage)
       .build()
@@ -106,15 +106,38 @@ describe('ArrayValidatorBuilder', () => {
     ])
   })
 
+  test('Should return LengthArrayMatchesValidator', () => {
+    const anotherFieldName = faker.datatype.string()
+    const validations = ArrayValidatorBuilder.init().lengthMatches(anotherFieldName).build()
+    expect(validations).toEqual([
+      new IsArrayValidator(),
+      new LengthArrayMatchesValidator(anotherFieldName)
+    ])
+  })
+
+  test('Should return LengthArrayMatchesValidator with custom message', () => {
+    const customErrorMessage = 'This array field length does not match another array field length'
+    const anotherFieldName = faker.datatype.string()
+    const validations = ArrayValidatorBuilder.init()
+      .lengthMatches(anotherFieldName, customErrorMessage)
+      .build()
+    expect(validations).toEqual([
+      new IsArrayValidator(),
+      new LengthArrayMatchesValidator(anotherFieldName, customErrorMessage)
+    ])
+  })
+
   test('Should return a list of validations', () => {
     const length = faker.datatype.number()
     const pattern = /^[0-1]/
+    const anotherFieldName = faker.datatype.string()
     const validations = ArrayValidatorBuilder.init()
       .required()
       .min(length)
       .valid(pattern)
       .elementsMinSize(length)
       .elementsMatchPattern(pattern)
+      .lengthMatches(anotherFieldName)
       .build()
     expect(validations).toEqual([
       new IsArrayValidator(),
@@ -122,7 +145,8 @@ describe('ArrayValidatorBuilder', () => {
       new MinLengthArrayValidator(length),
       new ValidFieldInputValidator(pattern),
       new MinArrayElementsLengthValidator(length),
-      new ArrayElementsMatchPatternValidator(pattern)
+      new ArrayElementsMatchPatternValidator(pattern),
+      new LengthArrayMatchesValidator(anotherFieldName)
     ])
   })
 })

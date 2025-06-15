@@ -1,6 +1,7 @@
 import {
   ArrayElementsMatchPatternValidator,
   IsArrayValidator,
+  LengthArrayMatchesValidator,
   MinArrayElementsLengthValidator,
   MinLengthArrayValidator
 } from '@validators/arrays'
@@ -52,6 +53,17 @@ export class ArrayValidatorBuilder extends BaseValidator<ArrayValidatorBuilder> 
    */
   elementsMatchPattern(pattern: RegExp, message?: string): ArrayValidatorBuilder {
     this.validators.push(new ArrayElementsMatchPatternValidator(pattern, message))
+    return this
+  }
+
+  /**
+   * Validates that a given array length maches anotherArray in the schema.
+   * @param otherFieldName The name of the other array field in the schema.
+   * @param message An optional message to display error text.
+   * @returns ArrayValidatorBuilder
+   */
+  lengthMatches(otherFieldName: string, message?: string): ArrayValidatorBuilder {
+    this.validators.push(new LengthArrayMatchesValidator(otherFieldName, message))
     return this
   }
 }
