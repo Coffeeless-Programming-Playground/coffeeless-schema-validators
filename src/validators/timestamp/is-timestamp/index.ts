@@ -20,6 +20,7 @@ export class IsTimestampValidator extends ChildInputValidator {
       input[this.field] !== undefined &&
       (typeof input[this.field] !== 'number' ||
         !Number.isFinite(input[this.field]) ||
+        !Number.isInteger(input[this.field]) ||
         input[this.field] <= 0 ||
         input[this.field] >= 9999999999)
     ) {

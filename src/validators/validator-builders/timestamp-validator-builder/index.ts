@@ -18,7 +18,7 @@ export class TimestampValidatorBuilder extends BaseValidator<TimestampValidatorB
   /**
    * Validates if a given timestamp has expired.
    * @param message An optional message to display error text.
-   * @returns InputValidatorBuilder
+   * @returns TimestampValidatorBuilder
    */
   expired(message?: string): TimestampValidatorBuilder {
     this.validators.push(new TimestampExpirationValidator(message))

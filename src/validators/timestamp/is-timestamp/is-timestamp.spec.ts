@@ -31,7 +31,7 @@ describe('IsTimestampValidator', () => {
     const customErrorMessage = 'Input field is not a timestamp'
     sut = new IsTimestampValidator(customErrorMessage)
     sut.setField(field)
-    myObject.timestamp = 9999999999
+    myObject.timestamp = 9.99
     const error = sut.validate(myObject)
     expect(error).toEqual(
       new InvalidFieldTypeError(field, `a ${DATA_TYPES.TIMESTAMP}`, customErrorMessage)
