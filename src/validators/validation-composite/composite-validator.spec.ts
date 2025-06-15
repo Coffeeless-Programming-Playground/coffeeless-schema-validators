@@ -9,10 +9,10 @@ import {
 import {
   CompositeValidator,
   EmailInputValidator,
-  InputValidatorBuilder,
   MinLengthInputValidator,
   RequiredFieldInputValidator,
-  ValidFieldInputValidator
+  ValidFieldInputValidator,
+  StringValidatorBuilder
 } from '@validators/index'
 
 interface User {
@@ -33,7 +33,7 @@ describe('CompositeValidator', () => {
   const anyField = faker.random.word()
   const anyValue = faker.random.word()
   let sut: CompositeValidator<User>
-  let inputValidatorBuilder: MockProxy<InputValidatorBuilder>
+  let stringValidatorBuilder: MockProxy<StringValidatorBuilder>
   let emailInputValidator: MockProxy<EmailInputValidator>
   let minLengthInputValidator: MockProxy<MinLengthInputValidator>
   let requiredFieldInputValidator: MockProxy<RequiredFieldInputValidator>
@@ -41,7 +41,7 @@ describe('CompositeValidator', () => {
   let myUser: User
 
   beforeAll(() => {
-    inputValidatorBuilder = mock()
+    stringValidatorBuilder = mock()
     emailInputValidator = mock()
     minLengthInputValidator = mock()
     requiredFieldInputValidator = mock()
@@ -50,20 +50,20 @@ describe('CompositeValidator', () => {
     minLengthInputValidator.validate.mockReturnValue(undefined)
     requiredFieldInputValidator.validate.mockReturnValue(undefined)
     validFieldInputValidator.validate.mockReturnValue(undefined)
-    inputValidatorBuilder.email.mockReturnValue(inputValidatorBuilder)
-    inputValidatorBuilder.min.mockReturnValue(inputValidatorBuilder)
-    inputValidatorBuilder.required.mockReturnValue(inputValidatorBuilder)
-    inputValidatorBuilder.valid.mockReturnValue(inputValidatorBuilder)
-    inputValidatorBuilder.build
+    stringValidatorBuilder.email.mockReturnValue(stringValidatorBuilder)
+    stringValidatorBuilder.min.mockReturnValue(stringValidatorBuilder)
+    stringValidatorBuilder.required.mockReturnValue(stringValidatorBuilder)
+    stringValidatorBuilder.valid.mockReturnValue(stringValidatorBuilder)
+    stringValidatorBuilder.build
       .mockReturnValueOnce([minLengthInputValidator, requiredFieldInputValidator])
       .mockReturnValueOnce([minLengthInputValidator, requiredFieldInputValidator])
       .mockReturnValueOnce([emailInputValidator, requiredFieldInputValidator])
       .mockReturnValueOnce([validFieldInputValidator, requiredFieldInputValidator])
     sut = new CompositeValidator({
-      name: inputValidatorBuilder.min(2).required().build(),
-      lasName: inputValidatorBuilder.min(5).required().build(),
-      email: inputValidatorBuilder.email().required().build(),
-      phoneNumber: inputValidatorBuilder
+      name: stringValidatorBuilder.min(2).required().build(),
+      lasName: stringValidatorBuilder.min(5).required().build(),
+      email: stringValidatorBuilder.email().required().build(),
+      phoneNumber: stringValidatorBuilder
         .valid(/^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/)
         .required()
         .build()
@@ -89,16 +89,16 @@ describe('CompositeValidator', () => {
     minLengthInputValidator.validate.mockReturnValueOnce(new MinLengthFieldError(anyField, 5))
     requiredFieldInputValidator.validate.mockReturnValueOnce(new RequiredFieldError(anyField))
     validFieldInputValidator.validate.mockReturnValueOnce(new InvalidFieldError(anyField))
-    inputValidatorBuilder.build
+    stringValidatorBuilder.build
       .mockReturnValueOnce([minLengthInputValidator, requiredFieldInputValidator])
       .mockReturnValueOnce([minLengthInputValidator, requiredFieldInputValidator])
       .mockReturnValueOnce([emailInputValidator, requiredFieldInputValidator])
       .mockReturnValueOnce([validFieldInputValidator, requiredFieldInputValidator])
     sut = new CompositeValidator({
-      name: inputValidatorBuilder.min(2).required().build(),
-      lasName: inputValidatorBuilder.min(5).required().build(),
-      email: inputValidatorBuilder.email().required().build(),
-      phoneNumber: inputValidatorBuilder
+      name: stringValidatorBuilder.min(2).required().build(),
+      lasName: stringValidatorBuilder.min(5).required().build(),
+      email: stringValidatorBuilder.email().required().build(),
+      phoneNumber: stringValidatorBuilder
         .valid(/^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/)
         .required()
         .build()
@@ -119,16 +119,16 @@ describe('CompositeValidator', () => {
   test('Should throw the first exception returned if any of the dependencies returns an exception', () => {
     const requiredException = new RequiredFieldError(anyField)
     requiredFieldInputValidator.validate.mockReturnValueOnce(requiredException)
-    inputValidatorBuilder.build
+    stringValidatorBuilder.build
       .mockReturnValueOnce([minLengthInputValidator, requiredFieldInputValidator])
       .mockReturnValueOnce([minLengthInputValidator, requiredFieldInputValidator])
       .mockReturnValueOnce([emailInputValidator, requiredFieldInputValidator])
       .mockReturnValueOnce([validFieldInputValidator, requiredFieldInputValidator])
     sut = new CompositeValidator({
-      name: inputValidatorBuilder.min(2).required().build(),
-      lasName: inputValidatorBuilder.min(5).required().build(),
-      email: inputValidatorBuilder.email().required().build(),
-      phoneNumber: inputValidatorBuilder
+      name: stringValidatorBuilder.min(2).required().build(),
+      lasName: stringValidatorBuilder.min(5).required().build(),
+      email: stringValidatorBuilder.email().required().build(),
+      phoneNumber: stringValidatorBuilder
         .valid(/^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/)
         .required()
         .build()

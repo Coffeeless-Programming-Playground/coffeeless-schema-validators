@@ -1,6 +1,10 @@
-import { InputValidatorBuilder } from '@validators/builder'
-import { email, min, required, schemaValidator, valid } from './utils'
 import { CompositeValidator } from '@validators/validation-composite'
+import {
+  ArrayValidatorBuilder,
+  StringValidatorBuilder,
+  TimestampValidatorBuilder
+} from '@validators/validator-builders'
+import { array, schemaValidator, string, timestamp } from './utils'
 
 interface User {
   name: string
@@ -8,39 +12,30 @@ interface User {
 }
 
 describe('Utils tests', () => {
-  test('Ensure email returns an InputValidatorBuilder instance', () => {
-    const validationBuilder = InputValidatorBuilder.init()
-    validationBuilder.email()
-    expect(email()).toEqual(validationBuilder)
+  test('Ensure email returns an ArrayValidatorBuilder instance', () => {
+    const validationBuilder = ArrayValidatorBuilder.init()
+    expect(array()).toEqual(validationBuilder)
   })
 
-  test('Ensure min returns an InputValidatorBuilder instance', () => {
-    const validationBuilder = InputValidatorBuilder.init()
-    validationBuilder.min(5)
-    expect(min(5)).toEqual(validationBuilder)
+  test('Ensure string returns an StringValidatorBuilder instance', () => {
+    const validationBuilder = StringValidatorBuilder.init()
+    expect(string()).toEqual(validationBuilder)
   })
 
-  test('Ensure required returns an InputValidatorBuilder instance', () => {
-    const validationBuilder = InputValidatorBuilder.init()
-    validationBuilder.required()
-    expect(required()).toEqual(validationBuilder)
-  })
-
-  test('Ensure valid returns an InputValidatorBuilder instance', () => {
-    const validationBuilder = InputValidatorBuilder.init()
-    validationBuilder.valid(/hello/)
-    expect(valid(/hello/)).toEqual(validationBuilder)
+  test('Ensure timestamp returns an InputValidatorBuilder instance', () => {
+    const validationBuilder = TimestampValidatorBuilder.init()
+    expect(timestamp()).toEqual(validationBuilder)
   })
 
   test('Ensure schemaValidator returns a CompositeValidator instance', () => {
     const compositeValidator = new CompositeValidator<User>({
-      name: required().build(),
-      lastName: required().build()
+      name: string().required().build(),
+      lastName: string().required().build()
     })
     expect(
       schemaValidator<User>({
-        name: required().build(),
-        lastName: required().build()
+        name: string().required().build(),
+        lastName: string().required().build()
       })
     ).toEqual(compositeValidator)
   })
