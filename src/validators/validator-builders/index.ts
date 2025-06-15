@@ -1,3 +1,5 @@
 export * from './array-validator-builder'
 export * from './timestamp-validator-builder'
 export * from './string-validator-builder'
+export * from './number-validator-builder'
+export * from './object-validator-builder'
