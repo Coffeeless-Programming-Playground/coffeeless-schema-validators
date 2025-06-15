@@ -1,3 +1,12 @@
+# [2.2.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.1.0...v2.2.0) (2025-06-15)
+
+
+### Features
+
+* add string field comparison validation ([1b65946](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/1b65946bf7ba6e82c47e776f4c37a8cb8a5afe66))
+
+
+
 # [2.1.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.0.0...v2.1.0) (2025-06-15)
 
 
@@ -42,10 +51,6 @@
 ### Bug Fixes
 
 * add npm registry url ([bfa4a38](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/bfa4a38404a4a2c373f9a45d94982f4ad0d7d73b))
-
-
-
-## [1.0.1](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v1.0.0...v1.0.1) (2025-05-31)
 
 
 
