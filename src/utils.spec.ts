@@ -1,10 +1,12 @@
 import { CompositeValidator } from '@validators/validation-composite'
 import {
   ArrayValidatorBuilder,
+  NumberValidatorBuilder,
+  ObjectValidatorBuilder,
   StringValidatorBuilder,
   TimestampValidatorBuilder
 } from '@validators/validator-builders'
-import { array, schemaValidator, string, timestamp } from './utils'
+import { array, number, object, schemaValidator, string, timestamp } from './utils'
 
 interface User {
   name: string
@@ -12,6 +14,16 @@ interface User {
 }
 
 describe('Utils tests', () => {
+  test('Ensure object returns an ObjectValidatorBuilder instance', () => {
+    const validationBuilder = ObjectValidatorBuilder.init()
+    expect(object()).toEqual(validationBuilder)
+  })
+
+  test('Ensure number returns an NumberValidatorBuilder instance', () => {
+    const validationBuilder = NumberValidatorBuilder.init()
+    expect(number()).toEqual(validationBuilder)
+  })
+
   test('Ensure email returns an ArrayValidatorBuilder instance', () => {
     const validationBuilder = ArrayValidatorBuilder.init()
     expect(array()).toEqual(validationBuilder)

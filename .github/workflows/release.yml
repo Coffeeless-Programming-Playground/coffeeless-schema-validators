@@ -55,8 +55,8 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           output-file: CHANGELOG.md
-          skip-bump: true
-          skip-tag: true
+          skip-bump: false
+          skip-tag: false
           skip-commit: false
           skip-on-empty: true
 

@@ -14,6 +14,11 @@ describe('Express user save example', () => {
           name: '',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
           phoneNumber: '6107483392'
         })
         .expect(400, '{"error":"Bad request exception: RequiredFieldError: name is Required"}')
@@ -27,6 +32,11 @@ describe('Express user save example', () => {
           name: 'a',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
           phoneNumber: '6107483392'
         })
         .expect(
@@ -43,6 +53,11 @@ describe('Express user save example', () => {
           name: 'Frédéric Chopin',
           email: '',
           pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
           phoneNumber: '6107483392'
         })
         .expect(
@@ -60,6 +75,11 @@ describe('Express user save example', () => {
           name: 'Frédéric Chopin',
           email: 'chopingmail.com',
           pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
           phoneNumber: '6107483392'
         })
         .expect(400, '{"error":"Bad request exception: EmailFieldError: email is not valid"}')
@@ -73,6 +93,11 @@ describe('Express user save example', () => {
           name: 'Frédéric Chopin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
           phoneNumber: ''
         })
         .expect(
@@ -89,6 +114,11 @@ describe('Express user save example', () => {
           name: 'Frédéric Chopin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
           phoneNumber: '61074833920as'
         })
         .expect(400, '{"error":"Bad request exception: InvalidFieldError: phoneNumber is invalid"}')
@@ -102,6 +132,11 @@ describe('Express user save example', () => {
           name: 'Frédéric Chopin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
           phoneNumber: '6107482298'
         })
         .expect(
@@ -118,6 +153,11 @@ describe('Express user save example', () => {
           name: 'Frédéric Chopin',
           email: 'chopin@gmail.com',
           pets: ['cat'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
           phoneNumber: '6107482298'
         })
         .expect(
@@ -134,6 +174,11 @@ describe('Express user save example', () => {
           name: 'Frédéric Chopin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'an'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
           phoneNumber: '6107482298'
         })
         .expect(
@@ -150,11 +195,55 @@ describe('Express user save example', () => {
           name: 'Frédéric Chopin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'baby dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
           phoneNumber: '6107482298'
         })
         .expect(
           400,
           '{"error":"Bad request exception: InvalidFieldError: Array element is invalid"}'
+        )
+    })
+
+    test('Should return 400 if any age is less than min value', async () => {
+      await request(app)
+        .post('/v1/create')
+        .send({
+          timestamp: oneHourAhead,
+          name: 'Frédéric Chopin',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: 17,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
+          phoneNumber: '6107482298'
+        })
+        .expect(
+          400,
+          '{"error":"Bad request exception: MinValueFieldError: age value must be at least 18"}'
+        )
+    })
+
+    test('Should return 400 if info object is empty', async () => {
+      await request(app)
+        .post('/v1/create')
+        .send({
+          timestamp: oneHourAhead,
+          name: 'Frédéric Chopin',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: 18,
+          info: {},
+          phoneNumber: '6107482298'
+        })
+        .expect(
+          400,
+          '{"error":"Bad request exception: InvalidFieldTypeError: info is not an object"}'
         )
     })
 
@@ -166,6 +255,11 @@ describe('Express user save example', () => {
           name: 'Frédéric Chopin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
           phoneNumber: '6107482298'
         })
         .expect(200, '{"message":"Saved user!"}')
@@ -181,6 +275,11 @@ describe('Express user save example', () => {
           name: '',
           email: 'chopingmail.com',
           pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
           phoneNumber: '61074833920as'
         })
         .expect(400, '{"error":"Bad request exception: name is Required"}')
@@ -194,6 +293,11 @@ describe('Express user save example', () => {
           name: 'Frédéric Chopin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
           phoneNumber: '6107482298'
         })
         .expect(200, '{"message":"Saved user!"}')

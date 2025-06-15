@@ -3,8 +3,28 @@ import { CompositeValidator } from '@validators/validation-composite'
 import {
   ArrayValidatorBuilder,
   StringValidatorBuilder,
-  TimestampValidatorBuilder
+  TimestampValidatorBuilder,
+  NumberValidatorBuilder,
+  ObjectValidatorBuilder
 } from '@validators/validator-builders'
+
+/**
+ * Initializes an object validator to apply validation rules on an object field.
+ * @param message An optional message to return an error if is object validation fails.
+ * @returns ObjectValidatorBuilder
+ */
+export function object(message?: string) {
+  return ObjectValidatorBuilder.init(message)
+}
+
+/**
+ * Initializes a number validator to apply validation rules on a number field.
+ * @param message An optional message to return an error if is number validation fails.
+ * @returns NumberValidatorBuilder
+ */
+export function number(message?: string) {
+  return NumberValidatorBuilder.init(message)
+}
 
 /**
  * Initializes an array validator to apply validation rules on an array field.
@@ -16,7 +36,7 @@ export function array(message?: string) {
 }
 
 /**
- * Initializes an string validator to apply validation rules on a string field.
+ * Initializes a string validator to apply validation rules on a string field.
  * @param message An optional message to return an error if is string validation fails.
  * @returns StringValidatorBuilder
  */
@@ -25,7 +45,7 @@ export function string(message?: string) {
 }
 
 /**
- * Initializes an timestamp validator to apply validation rules on a timestamp field.
+ * Initializes a timestamp validator to apply validation rules on a timestamp field.
  * @param message An optional message to return an error if is string validation fails.
  * @returns TimestampValidatorBuilder
  */

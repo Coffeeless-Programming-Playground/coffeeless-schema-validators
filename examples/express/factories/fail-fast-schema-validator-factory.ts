@@ -3,7 +3,9 @@ import {
   InputValidator,
   timestamp,
   string,
-  array
+  array,
+  number,
+  object
 } from 'coffeeless-schema-validators/dist'
 import { User } from '../interfaces/user-interface'
 
@@ -18,6 +20,8 @@ export const makeFailFastSchemaValidator = (): InputValidator => {
       .elementsMinSize(3)
       .elementsMatchPattern(/^(cat|dog|lion|tiger|elephant|zebra|giraffe|bear|wolf|rabbit|fox|an)$/)
       .build(),
+    age: number().required().min(18).build(),
+    info: object().required().build(),
     phoneNumber: string()
       .required()
       .valid(/^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/)
