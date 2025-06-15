@@ -8,5 +8,7 @@ export interface User {
     address: string
     zipCode: number
   }
+  password: string
+  confirmPassword: string
   phoneNumber: string
 }

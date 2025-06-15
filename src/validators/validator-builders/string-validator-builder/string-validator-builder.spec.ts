@@ -1,5 +1,6 @@
 import faker from '@faker-js/faker'
 import {
+  CompareStringFieldValidator,
   EmailInputValidator,
   IsStringValidator,
   MinLengthArrayValidator,
@@ -77,21 +78,45 @@ describe('StringValidatorBuilder', () => {
     ])
   })
 
+  test('Should return CompareStringFieldValidator', () => {
+    const anotherField = faker.random.word()
+    const validations = StringValidatorBuilder.init().equal(anotherField).build()
+    expect(validations).toEqual([
+      new IsStringValidator(),
+      new CompareStringFieldValidator(anotherField)
+    ])
+  })
+
+  test('Should return CompareStringFieldValidator with custom message', () => {
+    const anotherField = faker.random.word()
+    const customErrorMessage = 'Strings are not equal'
+    const validations = StringValidatorBuilder.init()
+      .equal(anotherField, customErrorMessage)
+      .build()
+    expect(validations).toEqual([
+      new IsStringValidator(),
+      new CompareStringFieldValidator(anotherField, customErrorMessage)
+    ])
+  })
+
   test('Should return a list of validations', () => {
     const length = faker.datatype.number()
     const pattern = /^[0-1]/
+    const anotherField = faker.random.word()
     const validations = StringValidatorBuilder.init()
       .required()
       .min(length)
       .valid(pattern)
       .email()
+      .equal(anotherField)
       .build()
     expect(validations).toEqual([
       new IsStringValidator(),
       new RequiredFieldInputValidator(),
       new MinLengthArrayValidator(length),
       new ValidFieldInputValidator(pattern),
-      new EmailInputValidator()
+      new EmailInputValidator(),
+      new CompareStringFieldValidator(anotherField)
     ])
   })
 })

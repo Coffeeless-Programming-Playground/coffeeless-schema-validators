@@ -19,6 +19,8 @@ describe('Express user save example', () => {
             address: 'home',
             zipCode: 12345
           },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
           phoneNumber: '6107483392'
         })
         .expect(400, '{"error":"Bad request exception: RequiredFieldError: name is Required"}')
@@ -37,6 +39,8 @@ describe('Express user save example', () => {
             address: 'home',
             zipCode: 12345
           },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
           phoneNumber: '6107483392'
         })
         .expect(
@@ -58,6 +62,8 @@ describe('Express user save example', () => {
             address: 'home',
             zipCode: 12345
           },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
           phoneNumber: '6107483392'
         })
         .expect(
@@ -80,6 +86,8 @@ describe('Express user save example', () => {
             address: 'home',
             zipCode: 12345
           },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
           phoneNumber: '6107483392'
         })
         .expect(400, '{"error":"Bad request exception: EmailFieldError: email is not valid"}')
@@ -98,6 +106,8 @@ describe('Express user save example', () => {
             address: 'home',
             zipCode: 12345
           },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
           phoneNumber: ''
         })
         .expect(
@@ -119,6 +129,8 @@ describe('Express user save example', () => {
             address: 'home',
             zipCode: 12345
           },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
           phoneNumber: '61074833920as'
         })
         .expect(400, '{"error":"Bad request exception: InvalidFieldError: phoneNumber is invalid"}')
@@ -137,6 +149,8 @@ describe('Express user save example', () => {
             address: 'home',
             zipCode: 12345
           },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
           phoneNumber: '6107482298'
         })
         .expect(
@@ -158,6 +172,8 @@ describe('Express user save example', () => {
             address: 'home',
             zipCode: 12345
           },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
           phoneNumber: '6107482298'
         })
         .expect(
@@ -179,6 +195,8 @@ describe('Express user save example', () => {
             address: 'home',
             zipCode: 12345
           },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
           phoneNumber: '6107482298'
         })
         .expect(
@@ -200,6 +218,8 @@ describe('Express user save example', () => {
             address: 'home',
             zipCode: 12345
           },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
           phoneNumber: '6107482298'
         })
         .expect(
@@ -221,6 +241,8 @@ describe('Express user save example', () => {
             address: 'home',
             zipCode: 12345
           },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
           phoneNumber: '6107482298'
         })
         .expect(
@@ -239,11 +261,36 @@ describe('Express user save example', () => {
           pets: ['cat', 'dog'],
           age: 18,
           info: {},
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
           phoneNumber: '6107482298'
         })
         .expect(
           400,
           '{"error":"Bad request exception: InvalidFieldTypeError: info is not an object"}'
+        )
+    })
+
+    test('Should return 400 if passwords do not match', async () => {
+      await request(app)
+        .post('/v1/create')
+        .send({
+          timestamp: oneHourAhead,
+          name: 'Frédéric Chopin',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
+          password: 'mypassword',
+          confirmPassword: 'mypassword2',
+          phoneNumber: '6107482298'
+        })
+        .expect(
+          400,
+          '{"error":"Bad request exception: NotEqualFieldError: confirmPassword is not equal to password"}'
         )
     })
 
@@ -260,6 +307,8 @@ describe('Express user save example', () => {
             address: 'home',
             zipCode: 12345
           },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
           phoneNumber: '6107482298'
         })
         .expect(200, '{"message":"Saved user!"}')
@@ -280,6 +329,8 @@ describe('Express user save example', () => {
             address: 'home',
             zipCode: 12345
           },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
           phoneNumber: '61074833920as'
         })
         .expect(400, '{"error":"Bad request exception: name is Required"}')
@@ -298,6 +349,8 @@ describe('Express user save example', () => {
             address: 'home',
             zipCode: 12345
           },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
           phoneNumber: '6107482298'
         })
         .expect(200, '{"message":"Saved user!"}')

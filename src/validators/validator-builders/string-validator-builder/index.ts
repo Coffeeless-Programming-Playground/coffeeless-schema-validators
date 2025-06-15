@@ -1,5 +1,5 @@
 import { EmailInputValidator, MinLengthInputValidator } from '@validators/index'
-import { IsStringValidator } from '@validators/strings'
+import { CompareStringFieldValidator, IsStringValidator } from '@validators/strings'
 import { BaseValidator } from '../base-validator-builder'
 
 /**
@@ -19,7 +19,7 @@ export class StringValidatorBuilder extends BaseValidator<StringValidatorBuilder
   /**
    * Sets the minimum length of characters a field should contain.
    * @param length number parameter. Represents minimum length of the input.
-   * @returns InputValidatorBuilder
+   * @returns StringValidatorBuilder
    */
   min(minLength: number, message?: string): StringValidatorBuilder {
     this.validators.push(new MinLengthInputValidator(minLength, message))
@@ -29,10 +29,20 @@ export class StringValidatorBuilder extends BaseValidator<StringValidatorBuilder
   /**
    * Verifies email being valid.
    * @param message An optional message to display error text.
-   * @returns InputValidatorBuilder
+   * @returns StringValidatorBuilder
    */
   email(message?: string): StringValidatorBuilder {
     this.validators.push(new EmailInputValidator(message))
+    return this
+  }
+
+  /**
+   * Verifies a given string has the same value as another string in the schema.
+   * @param message An optional message to display error text.
+   * @returns StringValidatorBuilder
+   */
+  equal(anotherField: string, message?: string): StringValidatorBuilder {
+    this.validators.push(new CompareStringFieldValidator(anotherField, message))
     return this
   }
 }

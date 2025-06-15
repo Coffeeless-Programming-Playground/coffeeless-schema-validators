@@ -22,6 +22,8 @@ export const makeStandardSchemaValidator = (): InputValidator => {
       .build(),
     age: number().required().min(18).build(),
     info: object().required().build(),
+    password: string().required().build(),
+    confirmPassword: string().required().equal('password').build(),
     phoneNumber: string()
       .required()
       .valid(/^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/)
