@@ -2,6 +2,8 @@ import { Express, Request } from 'express'
 import { User } from '../interfaces/user-interface'
 import { makeStandardSchemaValidator } from '../factories/standard-schema-validator-factory'
 import { makeFailFastSchemaValidator } from '../factories/fail-fast-schema-validator-factory'
+import { TimestampExpirationError } from '../../../dist'
+import { BadRequestException } from '../../../dist/errors/bad-request-exception'
 
 export default (app: Express): void => {
   app.post('/v1/create', (req: Request, res) => {
@@ -25,8 +27,16 @@ export default (app: Express): void => {
         res.status(200)
         res.send({ message: `Saved user!` })
       } catch (error: any) {
-        res.status(400)
-        res.send({ error: `Bad request exception: ${error.message}` })
+        if (error instanceof TimestampExpirationError) {
+          res.status(400)
+          res.send({ error: `Token has expired` })
+          return
+        }
+        if (error instanceof BadRequestException) {
+          res.status(400)
+          res.send({ error: `Bad request exception: ${error.message}` })
+          return
+        }
       }
     }
     saveUser(req.body)

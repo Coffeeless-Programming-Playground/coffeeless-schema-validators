@@ -336,6 +336,26 @@ describe('Express user save example', () => {
         .expect(400, '{"error":"Bad request exception: name is Required"}')
     })
 
+    test('Should throw TimestampExpirationError on exp field', async () => {
+      await request(app)
+        .post('/v2/create')
+        .send({
+          timestamp: now - 3600,
+          name: 'Frédéric Chopin',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
+          phoneNumber: '6107482298'
+        })
+        .expect(400, '{"error":"Token has expired"}')
+    })
+
     test('Should return 200 if schema is valid', async () => {
       await request(app)
         .post('/v2/create')
