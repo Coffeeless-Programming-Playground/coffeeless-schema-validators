@@ -1,3 +1,12 @@
+# [2.3.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.2.0...v2.3.0) (2025-06-18)
+
+
+### Features
+
+* create BadRequestException base class to facilitate exception handling ([7fc8e9e](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/7fc8e9e1d54ae476a9a8db98af2b0ffd48d3948f))
+
+
+
 # [2.2.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.1.0...v2.2.0) (2025-06-15)
 
 
@@ -42,15 +51,6 @@
 ### Features
 
 * add validationSchema utility function ([74b2804](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/74b28042965f22dcbaeaded8dae90acef03a2977))
-
-
-
-## [1.0.2](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v1.0.1...v1.0.2) (2025-05-31)
-
-
-### Bug Fixes
-
-* add npm registry url ([bfa4a38](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/bfa4a38404a4a2c373f9a45d94982f4ad0d7d73b))
 
 
 
