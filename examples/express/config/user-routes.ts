@@ -3,7 +3,7 @@ import { User } from '../interfaces/user-interface'
 import { makeStandardSchemaValidator } from '../factories/standard-schema-validator-factory'
 import { makeFailFastSchemaValidator } from '../factories/fail-fast-schema-validator-factory'
 import { TimestampExpirationError } from '../../../dist'
-import { BadRequestException } from '../../../dist/errors/bad-request-exception'
+import { ValidationError } from '../../../dist/errors/validation-error'
 
 export default (app: Express): void => {
   app.post('/v1/create', (req: Request, res) => {
@@ -32,7 +32,7 @@ export default (app: Express): void => {
           res.send({ error: `Token has expired` })
           return
         }
-        if (error instanceof BadRequestException) {
+        if (error instanceof ValidationError) {
           res.status(400)
           res.send({ error: `Bad request exception: ${error.message}` })
           return

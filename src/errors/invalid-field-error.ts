@@ -1,6 +1,6 @@
-import { BadRequestException } from './bad-request-exception'
+import { ValidationError } from './validation-error'
 
-export class InvalidFieldError extends BadRequestException {
+export class InvalidFieldError extends ValidationError {
   constructor(fieldName: string, message?: string) {
     super(`${message ?? `${fieldName} is invalid`}`)
     this.name = 'InvalidFieldError'
