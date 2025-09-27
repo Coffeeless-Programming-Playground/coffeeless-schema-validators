@@ -1,3 +1,12 @@
+# [2.5.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.4.1...v2.5.0) (2025-09-27)
+
+
+### Features
+
+* add positive and negative validators for number field ([bfba986](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/bfba986f83e95cc4fd0171d5322e1613ddda67c3))
+
+
+
 ## [2.4.1](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.4.0...v2.4.1) (2025-09-27)
 
 
@@ -31,23 +40,6 @@
 ### Features
 
 * add string field comparison validation ([1b65946](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/1b65946bf7ba6e82c47e776f4c37a8cb8a5afe66))
-
-
-
-# [2.1.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.0.0...v2.1.0) (2025-06-15)
-
-
-### Bug Fixes
-
-* add is integer validation to timestamp ([78fc3ea](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/78fc3eaac99118dae2e19b993733ed3e337b579f))
-
-
-### Features
-
-* add array length matches validation ([b449418](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/b449418e6b555a6698955906159118b64f88df06))
-* add number validations ([34c3dc1](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/34c3dc13ff482681292fc8e2568380e7806a2ad4))
-* add object validators ([b2f76c6](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/b2f76c6888f0559f6e66f8a0d488a2b6eea353c0))
-* add utils methods and update examples ([2a2bb31](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/2a2bb31e0bbfd2fe6e28db557d20a7c3111d7daf))
 
 
 
