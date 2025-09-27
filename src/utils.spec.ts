@@ -1,3 +1,6 @@
+import faker from '@faker-js/faker'
+import { ConditionalValidator } from '@validators/conditional-validator'
+import { ForbiddenFieldInputValidator } from '@validators/forbidden-validator'
 import { CompositeValidator } from '@validators/validation-composite'
 import {
   ArrayValidatorBuilder,
@@ -13,13 +16,12 @@ import {
   forbidden,
   number,
   object,
+  optional,
   schemaValidator,
   string,
   timestamp,
   when
 } from './utils'
-import { ConditionalValidator } from '@validators/conditional-validator'
-import { ForbiddenFieldInputValidator } from '@validators/forbidden-validator'
 
 interface User {
   name: string
@@ -70,6 +72,33 @@ describe('Utils tests', () => {
   test('Ensure forbidden returns an ForbiddenFieldInputValidator instance', () => {
     const validationBuilder = [new ForbiddenFieldInputValidator()]
     expect(forbidden()).toEqual(validationBuilder)
+  })
+
+  test('Ensure optional returns an a set of field validator builders', () => {
+    const message = faker.random.word()
+    expect(optional().object(message)).toEqual(ObjectValidatorBuilder.init(message, true))
+    expect(optional().boolean(message)).toEqual(BooleanValidatorBuilder.init(message, true))
+    expect(optional().number(message)).toEqual(NumberValidatorBuilder.init(message, true))
+    expect(optional().array(message)).toEqual(ArrayValidatorBuilder.init(message, true))
+    expect(optional().string(message)).toEqual(StringValidatorBuilder.init(message, true))
+    expect(optional().timestamp(message)).toEqual(TimestampValidatorBuilder.init(message, true))
+    expect(
+      optional().when(message, {
+        is: [],
+        then: [],
+        otherwise: []
+      })
+    ).toEqual([
+      new ConditionalValidator(
+        message,
+        {
+          is: [],
+          then: [],
+          otherwise: []
+        },
+        true
+      )
+    ])
   })
 
   test('Ensure schemaValidator returns a CompositeValidator instance', () => {

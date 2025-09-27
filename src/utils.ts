@@ -87,6 +87,25 @@ export function forbidden(message?: string) {
 }
 
 /**
+ * Sets field validators as optional. If the field is present in the schema, field validations will apply; otherwise,
+ * field validations will be omitted.
+ * @returns A set of validator builders.
+ */
+export function optional() {
+  return {
+    object: (message?: string) => ObjectValidatorBuilder.init(message, true),
+    boolean: (message?: string) => BooleanValidatorBuilder.init(message, true),
+    number: (message?: string) => NumberValidatorBuilder.init(message, true),
+    array: (message?: string) => ArrayValidatorBuilder.init(message, true),
+    string: (message?: string) => StringValidatorBuilder.init(message, true),
+    timestamp: (message?: string) => TimestampValidatorBuilder.init(message, true),
+    when: (targetField: string, conditionalValidator: ConditionalValidatorProps) => [
+      new ConditionalValidator(targetField, conditionalValidator, true)
+    ]
+  }
+}
+
+/**
  * Creates a CompositeValidator instance which implements the composite pattern to apply schema validations
  * in cascade.
  * @param validationSchema A {@link ValidationSchema}

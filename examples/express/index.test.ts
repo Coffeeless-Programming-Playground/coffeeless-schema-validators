@@ -516,6 +516,30 @@ describe('Express user save example', () => {
         )
     })
 
+    test('Should return 400 if optional ip is not valid', async () => {
+      await request(app)
+        .post('/v1/create')
+        .send({
+          timestamp: oneHourAhead,
+          name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
+          phoneNumber: '6107482298',
+          isAlive: true,
+          currentBalance: -100,
+          ip: 'not_valid'
+        })
+        .expect(400, '{"error":"Bad request exception: InvalidFieldError: ip is invalid"}')
+    })
+
     test('Should return 200 if schema is valid', async () => {
       await request(app)
         .post('/v1/create')
@@ -534,7 +558,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
           isAlive: true,
-          currentBalance: -100
+          currentBalance: -100,
+          ip: '127.0.0.1'
         })
         .expect(200, '{"message":"Saved user!"}')
     })

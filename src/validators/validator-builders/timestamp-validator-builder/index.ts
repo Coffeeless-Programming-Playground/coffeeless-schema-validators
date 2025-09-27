@@ -11,8 +11,8 @@ export class TimestampValidatorBuilder extends BaseValidator<TimestampValidatorB
    * @param message An optional message to display error text when is timestamp validation fails.
    * @returns TimestampValidatorBuilder
    */
-  static init(message?: string): TimestampValidatorBuilder {
-    return new TimestampValidatorBuilder([new IsTimestampValidator(message)])
+  static init(message?: string, optional?: boolean): TimestampValidatorBuilder {
+    return new TimestampValidatorBuilder([new IsTimestampValidator(message, optional)])
   }
 
   /**

@@ -17,8 +17,8 @@ export class ArrayValidatorBuilder extends BaseValidator<ArrayValidatorBuilder> 
    * @param message An optional message to display error text when is array validation fails.
    * @returns ArrayValidatorBuilder
    */
-  static init(message?: string): ArrayValidatorBuilder {
-    return new ArrayValidatorBuilder([new IsArrayValidator(message)])
+  static init(message?: string, optional?: boolean): ArrayValidatorBuilder {
+    return new ArrayValidatorBuilder([new IsArrayValidator(message, optional)])
   }
 
   /**

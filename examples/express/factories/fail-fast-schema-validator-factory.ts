@@ -8,7 +8,8 @@ import {
   object,
   boolean,
   when,
-  forbidden
+  forbidden,
+  optional
 } from 'coffeeless-schema-validators/dist'
 import { User } from '../interfaces/user-interface'
 
@@ -38,6 +39,11 @@ export const makeFailFastSchemaValidator = (): InputValidator => {
       .valid(/^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/)
       .build(),
     isAlive: boolean().required().build(),
-    currentBalance: number().negative().build()
+    currentBalance: number().negative().build(),
+    ip: optional()
+      .string()
+      .required()
+      .valid(/^(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)){3}$/)
+      .build()
   }).failFast()
 }

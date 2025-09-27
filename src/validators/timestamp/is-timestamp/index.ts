@@ -6,8 +6,11 @@ import { ChildInputValidator } from '@protocols/child-input-validator'
  * An {@link ChildInputValidator} implementation to validate a field is a timestamp.
  */
 export class IsTimestampValidator extends ChildInputValidator {
-  constructor(private readonly message?: string) {
-    super()
+  constructor(
+    private readonly message?: string,
+    isOptional?: boolean
+  ) {
+    super(isOptional)
   }
 
   /**

@@ -16,8 +16,8 @@ export class StringValidatorBuilder extends BaseValidator<StringValidatorBuilder
    * @param message An optional message to display error text when is string validation fails.
    * @returns StringValidatorBuilder
    */
-  static init(message?: string): StringValidatorBuilder {
-    return new StringValidatorBuilder([new IsStringValidator(message)])
+  static init(message?: string, optional?: boolean): StringValidatorBuilder {
+    return new StringValidatorBuilder([new IsStringValidator(message, optional)])
   }
 
   /**

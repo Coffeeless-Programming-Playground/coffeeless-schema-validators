@@ -16,8 +16,8 @@ export class NumberValidatorBuilder extends BaseValidator<NumberValidatorBuilder
    * @param message An optional message to display error text when is number validation fails.
    * @returns NumberValidatorBuilder
    */
-  static init(message?: string): NumberValidatorBuilder {
-    return new NumberValidatorBuilder([new IsNumberValidator(message)])
+  static init(message?: string, optional?: boolean): NumberValidatorBuilder {
+    return new NumberValidatorBuilder([new IsNumberValidator(message, optional)])
   }
 
   /**

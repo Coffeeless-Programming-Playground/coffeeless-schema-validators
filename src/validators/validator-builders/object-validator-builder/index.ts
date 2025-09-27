@@ -11,7 +11,7 @@ export class ObjectValidatorBuilder extends BaseValidator<ObjectValidatorBuilder
    * @param message An optional message to display error text when is object validation fails.
    * @returns ObjectValidatorBuilder
    */
-  static init(message?: string): ObjectValidatorBuilder {
-    return new ObjectValidatorBuilder([new IsObjectValidator(message)])
+  static init(message?: string, optional?: boolean): ObjectValidatorBuilder {
+    return new ObjectValidatorBuilder([new IsObjectValidator(message, optional)])
   }
 }

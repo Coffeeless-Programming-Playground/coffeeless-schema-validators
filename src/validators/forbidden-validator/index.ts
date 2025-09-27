@@ -5,12 +5,15 @@ import { ChildInputValidator } from '@protocols/child-input-validator'
  * An {@link ChildInputValidator} implementation to validate a field is not present in the schema.
  */
 export class ForbiddenFieldInputValidator extends ChildInputValidator {
-  constructor(private readonly message?: string) {
-    super()
+  constructor(
+    private readonly message?: string,
+    isOptional?: boolean
+  ) {
+    super(isOptional)
   }
 
   /**
-   * Validates a input field is not present in a schema.
+   * Validates an input field is not present in a schema.
    * @param input The input value to validate.
    * @returns ForbiddenFieldError | undefined
    */

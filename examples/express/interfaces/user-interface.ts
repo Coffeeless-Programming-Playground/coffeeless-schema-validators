@@ -15,4 +15,5 @@ export interface User {
   phoneNumber: string
   isAlive: boolean
   currentBalance: number
+  ip?: string
 }

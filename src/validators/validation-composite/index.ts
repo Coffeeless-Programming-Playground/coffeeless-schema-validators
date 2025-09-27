@@ -5,7 +5,7 @@ import { ChildInputValidator, InputValidator, ValidationSchema } from '@protocol
  * {@link ValidationSchema} with a single method call.
  */
 export class CompositeValidator<T = any> implements InputValidator<T> {
-  private readonly validators: ChildInputValidator[] = []
+  private readonly validators = new Array<ChildInputValidator[]>()
   private errors: Error[] = []
   private fail: boolean = false
 
@@ -21,10 +21,12 @@ export class CompositeValidator<T = any> implements InputValidator<T> {
    */
   private addValidators(validationSchema: ValidationSchema<any>) {
     for (const [key, validators] of Object.entries(validationSchema)) {
+      const keyValidators = []
       for (const validator of validators) {
         validator.setField(key)
-        this.validators.push(validator)
+        keyValidators.push(validator)
       }
+      this.validators.push(keyValidators)
     }
   }
 
@@ -37,12 +39,20 @@ export class CompositeValidator<T = any> implements InputValidator<T> {
    */
   validate(input: T): Error[] | undefined {
     this.errors = []
-    for (const validator of this.validators) {
-      const error = validator.validate(input) as Error
-      if (this.fail && error) {
-        throw error
-      } else if (error) {
-        this.errors.push(error)
+    for (const keyValidators of this.validators) {
+      for (const validator of keyValidators) {
+        if (validator.isOptional()) {
+          const field = validator.getField()
+          if ((input as any)[field] === null || (input as any)[field] === undefined) {
+            break
+          }
+        }
+        const error = validator.validate(input) as Error
+        if (this.fail && error) {
+          throw error
+        } else if (error) {
+          this.errors.push(error)
+        }
       }
     }
     return this.errors

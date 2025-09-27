@@ -11,7 +11,7 @@ export class BooleanValidatorBuilder extends BaseValidator<BooleanValidatorBuild
    * @param message An optional message to display error text when is number validation fails.
    * @returns BooleanValidatorBuilder
    */
-  static init(message?: string): BooleanValidatorBuilder {
-    return new BooleanValidatorBuilder([new IsBooleanValidator(message)])
+  static init(message?: string, optional?: boolean): BooleanValidatorBuilder {
+    return new BooleanValidatorBuilder([new IsBooleanValidator(message, optional)])
   }
 }

@@ -8,9 +8,10 @@ import { ConditionalValidatorProps } from '@protocols/conditional-validator-prop
 export class ConditionalValidator extends ChildInputValidator {
   constructor(
     private readonly targetField: string,
-    private readonly conditionalValidator: ConditionalValidatorProps
+    private readonly conditionalValidator: ConditionalValidatorProps,
+    isOptional?: boolean
   ) {
-    super()
+    super(isOptional)
   }
 
   /**
