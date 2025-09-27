@@ -1,8 +1,6 @@
-import { MinValueFieldError } from '@errors/min-value-field-error'
+import { IsNegativeFieldError } from '@errors/is-negative-field-error'
 import faker from '@faker-js/faker'
 import { IsNegativeNumberValidator } from '.'
-import { MinNumberValueValidator } from '../min-value'
-import { IsNegativeFieldError } from '@errors/is-negative-field-error'
 
 const objectInitialValue = {
   debt: 0,

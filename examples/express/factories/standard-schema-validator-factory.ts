@@ -6,7 +6,8 @@ import {
   object,
   schemaValidator,
   string,
-  timestamp
+  timestamp,
+  when
 } from 'coffeeless-schema-validators/dist'
 import { User } from '../interfaces/user-interface'
 
@@ -14,6 +15,11 @@ export const makeStandardSchemaValidator = (): InputValidator => {
   return schemaValidator<User>({
     timestamp: timestamp().expired().build(),
     name: string().required().min(2).max(20).build(),
+    lastName: when('name', {
+      is: string().required().min(5).build(),
+      then: string().min(10).build(),
+      otherwise: string().min(20).build()
+    }),
     email: string().required().email().build(),
     pets: array()
       .required()

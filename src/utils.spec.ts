@@ -7,7 +7,8 @@ import {
   StringValidatorBuilder,
   TimestampValidatorBuilder
 } from '@validators/validator-builders'
-import { array, boolean, number, object, schemaValidator, string, timestamp } from './utils'
+import { array, boolean, number, object, schemaValidator, string, timestamp, when } from './utils'
+import { ConditionalValidator } from '@validators/conditional-validator'
 
 interface User {
   name: string
@@ -43,6 +44,16 @@ describe('Utils tests', () => {
   test('Ensure timestamp returns an InputValidatorBuilder instance', () => {
     const validationBuilder = TimestampValidatorBuilder.init()
     expect(timestamp()).toEqual(validationBuilder)
+  })
+
+  test('Ensure when returns an InputValidatorBuilder instance', () => {
+    const whenConditionalValidation = {
+      is: string().required().build(),
+      then: number().required().build(),
+      otherwise: number().min(12).build()
+    }
+    const validationBuilder = [new ConditionalValidator('any_field', whenConditionalValidation)]
+    expect(when('any_field', whenConditionalValidation)).toEqual(validationBuilder)
   })
 
   test('Ensure schemaValidator returns a CompositeValidator instance', () => {

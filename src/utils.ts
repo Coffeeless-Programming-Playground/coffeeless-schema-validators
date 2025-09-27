@@ -1,12 +1,14 @@
+import { ConditionalValidatorProps } from '@protocols/conditional-validator-props'
 import { ValidationSchema } from '@protocols/validation-schema'
+import { ConditionalValidator } from '@validators/conditional-validator'
 import { CompositeValidator } from '@validators/validation-composite'
 import {
   ArrayValidatorBuilder,
-  StringValidatorBuilder,
-  TimestampValidatorBuilder,
+  BooleanValidatorBuilder,
   NumberValidatorBuilder,
   ObjectValidatorBuilder,
-  BooleanValidatorBuilder
+  StringValidatorBuilder,
+  TimestampValidatorBuilder
 } from '@validators/validator-builders'
 
 /**
@@ -61,6 +63,17 @@ export function string(message?: string) {
  */
 export function timestamp(message?: string) {
   return TimestampValidatorBuilder.init(message)
+}
+
+/**
+ * Executes a validator on `then` field when `is` condition is met for a `targetField`; otherwise
+ * executes validator on `otherwise` field.
+ * @param targetField The field that subject to the validator on `is` field.
+ * @param conditionalValidator A {@link ConditionalValidatorProps}.
+ * @returns TimestampValidatorBuilder
+ */
+export function when(targetField: string, conditionalValidator: ConditionalValidatorProps) {
+  return [new ConditionalValidator(targetField, conditionalValidator)]
 }
 
 /**

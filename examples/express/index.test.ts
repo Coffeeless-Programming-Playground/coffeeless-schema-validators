@@ -12,6 +12,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: '',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
           age: 18,
@@ -34,6 +35,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: 'a',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
           age: 18,
@@ -59,6 +61,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: 'asdasdasdasdasdaasdas',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
           age: 18,
@@ -78,12 +81,65 @@ describe('Express user save example', () => {
         )
     })
 
+    test('Should return 400 if lastName is less than 10 characters', async () => {
+      await request(app)
+        .post('/v1/create')
+        .send({
+          timestamp: oneHourAhead,
+          name: 'Frédéric Chopin',
+          lastName: 'Chinta',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
+          phoneNumber: '6107483392',
+          isAlive: true,
+          currentBalance: -100
+        })
+        .expect(
+          400,
+          '{"error":"Bad request exception: MinLengthFieldError: lastName must be 10 characters at least"}'
+        )
+    })
+
+    test('Should return 400 if lastName is less than 20 characters', async () => {
+      await request(app)
+        .post('/v1/create')
+        .send({
+          timestamp: oneHourAhead,
+          name: 'Fréd',
+          lastName: 'Chintalapani Chopin',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
+          phoneNumber: '6107483392',
+          isAlive: true,
+          currentBalance: -100
+        })
+        .expect(
+          400,
+          '{"error":"Bad request exception: MinLengthFieldError: lastName must be 20 characters at least"}'
+        )
+    })
+
     test('Should return 400 if email is empty', async () => {
       await request(app)
         .post('/v1/create')
         .send({
           timestamp: oneHourAhead,
           name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
           email: '',
           pets: ['cat', 'dog'],
           age: 18,
@@ -110,6 +166,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopingmail.com',
           pets: ['cat', 'dog'],
           age: 18,
@@ -132,6 +189,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
           age: 18,
@@ -157,6 +215,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
           age: 18,
@@ -179,6 +238,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: now - 3600,
           name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
           age: 18,
@@ -204,6 +264,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat'],
           age: 18,
@@ -229,6 +290,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'an'],
           age: 18,
@@ -254,6 +316,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'baby dog'],
           age: 18,
@@ -279,6 +342,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
           age: -17,
@@ -304,6 +368,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
           age: 17,
@@ -329,6 +394,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
           age: 18,
@@ -351,6 +417,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
           age: 18,
@@ -376,6 +443,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
           age: 18,
@@ -401,6 +469,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
           age: 18,
@@ -426,6 +495,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
           age: 18,
@@ -450,6 +520,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: '',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopingmail.com',
           pets: ['cat', 'dog'],
           age: 18,
@@ -472,6 +543,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: now - 3600,
           name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
           age: 18,
@@ -494,6 +566,7 @@ describe('Express user save example', () => {
         .send({
           timestamp: oneHourAhead,
           name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
           email: 'chopin@gmail.com',
           pets: ['cat', 'dog'],
           age: 18,
