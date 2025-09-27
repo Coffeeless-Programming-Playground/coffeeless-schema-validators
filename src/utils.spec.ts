@@ -7,8 +7,19 @@ import {
   StringValidatorBuilder,
   TimestampValidatorBuilder
 } from '@validators/validator-builders'
-import { array, boolean, number, object, schemaValidator, string, timestamp, when } from './utils'
+import {
+  array,
+  boolean,
+  forbidden,
+  number,
+  object,
+  schemaValidator,
+  string,
+  timestamp,
+  when
+} from './utils'
 import { ConditionalValidator } from '@validators/conditional-validator'
+import { ForbiddenFieldInputValidator } from '@validators/forbidden-validator'
 
 interface User {
   name: string
@@ -41,12 +52,12 @@ describe('Utils tests', () => {
     expect(string()).toEqual(validationBuilder)
   })
 
-  test('Ensure timestamp returns an InputValidatorBuilder instance', () => {
+  test('Ensure timestamp returns an TimestampValidatorBuilder instance', () => {
     const validationBuilder = TimestampValidatorBuilder.init()
     expect(timestamp()).toEqual(validationBuilder)
   })
 
-  test('Ensure when returns an InputValidatorBuilder instance', () => {
+  test('Ensure when returns an ConditionalValidator instance', () => {
     const whenConditionalValidation = {
       is: string().required().build(),
       then: number().required().build(),
@@ -54,6 +65,11 @@ describe('Utils tests', () => {
     }
     const validationBuilder = [new ConditionalValidator('any_field', whenConditionalValidation)]
     expect(when('any_field', whenConditionalValidation)).toEqual(validationBuilder)
+  })
+
+  test('Ensure forbidden returns an ForbiddenFieldInputValidator instance', () => {
+    const validationBuilder = [new ForbiddenFieldInputValidator()]
+    expect(forbidden()).toEqual(validationBuilder)
   })
 
   test('Ensure schemaValidator returns a CompositeValidator instance', () => {

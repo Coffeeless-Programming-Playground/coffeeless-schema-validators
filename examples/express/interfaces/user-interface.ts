@@ -1,6 +1,7 @@
 export interface User {
   timestamp: number
   name: string
+  surname?: string
   lastName: string
   email: string
   pets: string[]

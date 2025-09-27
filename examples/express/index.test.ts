@@ -489,6 +489,33 @@ describe('Express user save example', () => {
         )
     })
 
+    test('Should return 400 if surname is present in the schema', async () => {
+      await request(app)
+        .post('/v1/create')
+        .send({
+          timestamp: oneHourAhead,
+          name: 'Frédéric Chopin',
+          surname: 'Alex',
+          lastName: 'Chintalapani Chopinin',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
+          phoneNumber: '6107482298',
+          isAlive: true,
+          currentBalance: -100
+        })
+        .expect(
+          400,
+          '{"error":"Bad request exception: ForbiddenFieldError: surname is not a valid field"}'
+        )
+    })
+
     test('Should return 200 if schema is valid', async () => {
       await request(app)
         .post('/v1/create')

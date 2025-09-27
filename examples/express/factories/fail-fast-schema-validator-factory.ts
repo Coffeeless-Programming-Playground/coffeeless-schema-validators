@@ -7,7 +7,8 @@ import {
   number,
   object,
   boolean,
-  when
+  when,
+  forbidden
 } from 'coffeeless-schema-validators/dist'
 import { User } from '../interfaces/user-interface'
 
@@ -15,6 +16,7 @@ export const makeFailFastSchemaValidator = (): InputValidator => {
   return schemaValidator<User>({
     timestamp: timestamp().expired().build(),
     name: string().required().min(2).max(20).build(),
+    surname: forbidden(),
     lastName: when('name', {
       is: string().required().min(5).build(),
       then: string().min(10).build(),

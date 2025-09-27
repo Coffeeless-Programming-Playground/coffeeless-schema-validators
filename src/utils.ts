@@ -1,6 +1,7 @@
 import { ConditionalValidatorProps } from '@protocols/conditional-validator-props'
 import { ValidationSchema } from '@protocols/validation-schema'
 import { ConditionalValidator } from '@validators/conditional-validator'
+import { ForbiddenFieldInputValidator } from '@validators/forbidden-validator'
 import { CompositeValidator } from '@validators/validation-composite'
 import {
   ArrayValidatorBuilder,
@@ -74,6 +75,15 @@ export function timestamp(message?: string) {
  */
 export function when(targetField: string, conditionalValidator: ConditionalValidatorProps) {
   return [new ConditionalValidator(targetField, conditionalValidator)]
+}
+
+/**
+ * Validates that a field does not exist in the schema.
+ * @param message An optional message to return an error if the field exists in the schema.
+ * @returns ForbiddenFieldInputValidator
+ */
+export function forbidden(message?: string) {
+  return [new ForbiddenFieldInputValidator(message)]
 }
 
 /**

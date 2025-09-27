@@ -1,6 +1,7 @@
 import {
   array,
   boolean,
+  forbidden,
   InputValidator,
   number,
   object,
@@ -15,6 +16,7 @@ export const makeStandardSchemaValidator = (): InputValidator => {
   return schemaValidator<User>({
     timestamp: timestamp().expired().build(),
     name: string().required().min(2).max(20).build(),
+    surname: forbidden(),
     lastName: when('name', {
       is: string().required().min(5).build(),
       then: string().min(10).build(),
