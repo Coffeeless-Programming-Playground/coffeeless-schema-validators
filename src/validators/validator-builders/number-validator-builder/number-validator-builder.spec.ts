@@ -1,7 +1,12 @@
 import faker from '@faker-js/faker'
 import { RequiredFieldInputValidator, ValidFieldInputValidator } from '@validators/index'
 
-import { IsNumberValidator, MinNumberValueValidator } from '@validators/numbers'
+import {
+  IsNegativeNumberValidator,
+  IsNumberValidator,
+  IsPositiveNumberValidator,
+  MinNumberValueValidator
+} from '@validators/numbers'
 import { NumberValidatorBuilder } from '.'
 
 describe('NumberValidatorBuilder', () => {
@@ -54,6 +59,34 @@ describe('NumberValidatorBuilder', () => {
     expect(validations).toEqual([
       new IsNumberValidator(),
       new MinNumberValueValidator(minValue, customErrorMessage)
+    ])
+  })
+
+  test('Should return IsPositiveNumberValidator', () => {
+    const validations = NumberValidatorBuilder.init().positive().build()
+    expect(validations).toEqual([new IsNumberValidator(), new IsPositiveNumberValidator()])
+  })
+
+  test('Should return IsPositiveNumberValidator with custom message', () => {
+    const customErrorMessage = 'field is not positive'
+    const validations = NumberValidatorBuilder.init().positive(customErrorMessage).build()
+    expect(validations).toEqual([
+      new IsNumberValidator(),
+      new IsPositiveNumberValidator(customErrorMessage)
+    ])
+  })
+
+  test('Should return IsNegativeNumberValidator', () => {
+    const validations = NumberValidatorBuilder.init().negative().build()
+    expect(validations).toEqual([new IsNumberValidator(), new IsNegativeNumberValidator()])
+  })
+
+  test('Should return IsNegativeNumberValidator with custom message', () => {
+    const customErrorMessage = 'field is not negative'
+    const validations = NumberValidatorBuilder.init().negative(customErrorMessage).build()
+    expect(validations).toEqual([
+      new IsNumberValidator(),
+      new IsNegativeNumberValidator(customErrorMessage)
     ])
   })
 

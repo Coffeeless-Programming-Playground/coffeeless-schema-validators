@@ -21,7 +21,7 @@ export const makeStandardSchemaValidator = (): InputValidator => {
       .elementsMinSize(3)
       .elementsMatchPattern(/^(cat|dog|lion|tiger|elephant|zebra|giraffe|bear|wolf|rabbit|fox|an)$/)
       .build(),
-    age: number().required().min(18).build(),
+    age: number().required().positive().min(18).build(),
     info: object().required().build(),
     password: string().required().build(),
     confirmPassword: string().required().equal('password').build(),
@@ -29,6 +29,7 @@ export const makeStandardSchemaValidator = (): InputValidator => {
       .required()
       .valid(/^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/)
       .build(),
-    isAlive: boolean().required().build()
+    isAlive: boolean().required().build(),
+    currentBalance: number().negative().build()
   })
 }

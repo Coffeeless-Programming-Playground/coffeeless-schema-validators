@@ -1,4 +1,9 @@
-import { IsNumberValidator, MinNumberValueValidator } from '@validators/numbers'
+import {
+  IsNegativeNumberValidator,
+  IsNumberValidator,
+  IsPositiveNumberValidator,
+  MinNumberValueValidator
+} from '@validators/numbers'
 import { BaseValidator } from '../base-validator-builder'
 
 /**
@@ -17,11 +22,32 @@ export class NumberValidatorBuilder extends BaseValidator<NumberValidatorBuilder
 
   /**
    * Validates if a given number is equal or greater than a given value.
+   * @param minValue The minimum value to compare a number field against.
    * @param message An optional message to display error text.
    * @returns NumberValidatorBuilder
    */
   min(minValue: number, message?: string): NumberValidatorBuilder {
     this.validators.push(new MinNumberValueValidator(minValue, message))
+    return this
+  }
+
+  /**
+   * Validates if a given number is positive.
+   * @param message An optional message to display error text.
+   * @returns NumberValidatorBuilder
+   */
+  positive(message?: string): NumberValidatorBuilder {
+    this.validators.push(new IsPositiveNumberValidator(message))
+    return this
+  }
+
+  /**
+   * Validates if a given number is negative.
+   * @param message An optional message to display error text.
+   * @returns NumberValidatorBuilder
+   */
+  negative(message?: string): NumberValidatorBuilder {
+    this.validators.push(new IsNegativeNumberValidator(message))
     return this
   }
 }

@@ -12,4 +12,5 @@ export interface User {
   confirmPassword: string
   phoneNumber: string
   isAlive: boolean
+  currentBalance: number
 }

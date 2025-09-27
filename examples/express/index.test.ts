@@ -22,7 +22,8 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword',
           phoneNumber: '6107483392',
-          isAlive: true
+          isAlive: true,
+          currentBalance: -100
         })
         .expect(400, '{"error":"Bad request exception: RequiredFieldError: name is Required"}')
     })
@@ -43,7 +44,8 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword',
           phoneNumber: '6107483392',
-          isAlive: true
+          isAlive: true,
+          currentBalance: -100
         })
         .expect(
           400,
@@ -67,7 +69,8 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword',
           phoneNumber: '6107483392',
-          isAlive: true
+          isAlive: true,
+          currentBalance: -100
         })
         .expect(
           400,
@@ -92,7 +95,8 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword',
           phoneNumber: '6107483392',
-          isAlive: true
+          isAlive: true,
+          currentBalance: -100
         })
         .expect(400, '{"error":"Bad request exception: EmailFieldError: email is not valid"}')
     })
@@ -113,7 +117,8 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword',
           phoneNumber: '',
-          isAlive: true
+          isAlive: true,
+          currentBalance: -100
         })
         .expect(
           400,
@@ -137,7 +142,8 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword',
           phoneNumber: '61074833920as',
-          isAlive: true
+          isAlive: true,
+          currentBalance: -100
         })
         .expect(400, '{"error":"Bad request exception: InvalidFieldError: phoneNumber is invalid"}')
     })
@@ -158,7 +164,8 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
-          isAlive: true
+          isAlive: true,
+          currentBalance: -100
         })
         .expect(
           400,
@@ -182,7 +189,8 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
-          isAlive: true
+          isAlive: true,
+          currentBalance: -100
         })
         .expect(
           400,
@@ -206,7 +214,8 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
-          isAlive: true
+          isAlive: true,
+          currentBalance: -100
         })
         .expect(
           400,
@@ -230,7 +239,8 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
-          isAlive: true
+          isAlive: true,
+          currentBalance: -100
         })
         .expect(
           400,
@@ -238,7 +248,32 @@ describe('Express user save example', () => {
         )
     })
 
-    test('Should return 400 if any age is less than min value', async () => {
+    test('Should return 400 if age is negative', async () => {
+      await request(app)
+        .post('/v1/create')
+        .send({
+          timestamp: oneHourAhead,
+          name: 'Frédéric Chopin',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: -17,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
+          phoneNumber: '6107482298',
+          isAlive: true,
+          currentBalance: -100
+        })
+        .expect(
+          400,
+          '{"error":"Bad request exception: IsPositiveFieldError: age is not positive,MinValueFieldError: age value must be at least 18"}'
+        )
+    })
+
+    test('Should return 400 if age is less than min value', async () => {
       await request(app)
         .post('/v1/create')
         .send({
@@ -254,7 +289,8 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
-          isAlive: true
+          isAlive: true,
+          currentBalance: -100
         })
         .expect(
           400,
@@ -275,7 +311,8 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
-          isAlive: true
+          isAlive: true,
+          currentBalance: -100
         })
         .expect(
           400,
@@ -299,7 +336,8 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword2',
           phoneNumber: '6107482298',
-          isAlive: true
+          isAlive: true,
+          currentBalance: -100
         })
         .expect(
           400,
@@ -323,11 +361,37 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
-          isAlive: 1
+          isAlive: 1,
+          currentBalance: -100
         })
         .expect(
           400,
           '{"error":"Bad request exception: InvalidFieldTypeError: isAlive is not a boolean"}'
+        )
+    })
+
+    test('Should return 400 if currentBalance is positive', async () => {
+      await request(app)
+        .post('/v1/create')
+        .send({
+          timestamp: oneHourAhead,
+          name: 'Frédéric Chopin',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
+          phoneNumber: '6107482298',
+          isAlive: true,
+          currentBalance: 100
+        })
+        .expect(
+          400,
+          '{"error":"Bad request exception: IsNegativeFieldError: currentBalance is not negative"}'
         )
     })
 
@@ -347,7 +411,8 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
-          isAlive: true
+          isAlive: true,
+          currentBalance: -100
         })
         .expect(200, '{"message":"Saved user!"}')
     })
@@ -370,7 +435,8 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword',
           phoneNumber: '61074833920as',
-          isAlive: true
+          isAlive: true,
+          currentBalance: -100
         })
         .expect(400, '{"error":"Bad request exception: name is Required"}')
     })
@@ -391,7 +457,8 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
-          isAlive: true
+          isAlive: true,
+          currentBalance: -100
         })
         .expect(400, '{"error":"Token has expired"}')
     })
@@ -412,7 +479,8 @@ describe('Express user save example', () => {
           password: 'mypassword',
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
-          isAlive: true
+          isAlive: true,
+          currentBalance: -100
         })
         .expect(200, '{"message":"Saved user!"}')
     })
