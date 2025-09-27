@@ -13,7 +13,7 @@ import { User } from '../interfaces/user-interface'
 export const makeStandardSchemaValidator = (): InputValidator => {
   return schemaValidator<User>({
     timestamp: timestamp().expired().build(),
-    name: string().required().min(2).build(),
+    name: string().required().min(2).max(20).build(),
     email: string().required().email().build(),
     pets: array()
       .required()

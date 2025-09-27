@@ -1,5 +1,9 @@
 import { EmailInputValidator, MinLengthInputValidator } from '@validators/index'
-import { CompareStringFieldValidator, IsStringValidator } from '@validators/strings'
+import {
+  CompareStringFieldValidator,
+  IsStringValidator,
+  MaxLengthInputValidator
+} from '@validators/strings'
 import { BaseValidator } from '../base-validator-builder'
 
 /**
@@ -18,11 +22,21 @@ export class StringValidatorBuilder extends BaseValidator<StringValidatorBuilder
 
   /**
    * Sets the minimum length of characters a field should contain.
-   * @param length number parameter. Represents minimum length of the input.
+   * @param minLength number parameter. Represents minimum length of the input.
    * @returns StringValidatorBuilder
    */
   min(minLength: number, message?: string): StringValidatorBuilder {
     this.validators.push(new MinLengthInputValidator(minLength, message))
+    return this
+  }
+
+  /**
+   * Sets the maximum length of characters a field should contain.
+   * @param maxLength number parameter. Represents maximum length of the input.
+   * @returns StringValidatorBuilder
+   */
+  max(maxLength: number, message?: string): StringValidatorBuilder {
+    this.validators.push(new MaxLengthInputValidator(maxLength, message))
     return this
   }
 

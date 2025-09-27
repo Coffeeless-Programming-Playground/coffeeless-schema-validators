@@ -3,7 +3,7 @@ import {
   CompareStringFieldValidator,
   EmailInputValidator,
   IsStringValidator,
-  MinLengthArrayValidator,
+  MaxLengthInputValidator,
   MinLengthInputValidator,
   RequiredFieldInputValidator,
   ValidFieldInputValidator
@@ -64,6 +64,22 @@ describe('StringValidatorBuilder', () => {
     ])
   })
 
+  test('Should return MaxLengthInputValidator', () => {
+    const length = faker.datatype.number()
+    const validations = StringValidatorBuilder.init().max(length).build()
+    expect(validations).toEqual([new IsStringValidator(), new MaxLengthInputValidator(length)])
+  })
+
+  test('Should return MaxLengthInputValidator with custom message', () => {
+    const customErrorMessage = 'This field does not meet the max length constraint'
+    const length = faker.datatype.number()
+    const validations = StringValidatorBuilder.init().max(length, customErrorMessage).build()
+    expect(validations).toEqual([
+      new IsStringValidator(),
+      new MaxLengthInputValidator(length, customErrorMessage)
+    ])
+  })
+
   test('Should return EmailInputValidator', () => {
     const validations = StringValidatorBuilder.init().email().build()
     expect(validations).toEqual([new IsStringValidator(), new EmailInputValidator()])
@@ -106,14 +122,16 @@ describe('StringValidatorBuilder', () => {
     const validations = StringValidatorBuilder.init()
       .required()
       .min(length)
+      .max(length)
       .valid(pattern)
       .email()
       .equal(anotherField)
       .build()
-    expect(validations).toEqual([
+    expect(validations).toStrictEqual([
       new IsStringValidator(),
       new RequiredFieldInputValidator(),
-      new MinLengthArrayValidator(length),
+      new MinLengthInputValidator(length),
+      new MaxLengthInputValidator(length),
       new ValidFieldInputValidator(pattern),
       new EmailInputValidator(),
       new CompareStringFieldValidator(anotherField)

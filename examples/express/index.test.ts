@@ -28,7 +28,7 @@ describe('Express user save example', () => {
         .expect(400, '{"error":"Bad request exception: RequiredFieldError: name is Required"}')
     })
 
-    test('Should return 400 if name is lest than 2 characters', async () => {
+    test('Should return 400 if name is less than 2 characters', async () => {
       await request(app)
         .post('/v1/create')
         .send({
@@ -50,6 +50,31 @@ describe('Express user save example', () => {
         .expect(
           400,
           '{"error":"Bad request exception: MinLengthFieldError: name must be 2 characters at least"}'
+        )
+    })
+
+    test('Should return 400 if name is greater than 20 characters', async () => {
+      await request(app)
+        .post('/v1/create')
+        .send({
+          timestamp: oneHourAhead,
+          name: 'asdasdasdasdasdaasdas',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
+          phoneNumber: '6107483392',
+          isAlive: true,
+          currentBalance: -100
+        })
+        .expect(
+          400,
+          '{"error":"Bad request exception: MaxLengthFieldError: name must be 20 characters at most"}'
         )
     })
 
