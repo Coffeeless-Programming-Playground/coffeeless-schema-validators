@@ -1,3 +1,12 @@
+## [2.4.1](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.4.0...v2.4.1) (2025-09-27)
+
+
+### Bug Fixes
+
+* required field only throws exception when field is null, undefined, or an empty string ([f2d8332](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/f2d8332be20680068b368f09b0e83882b09dfea3))
+
+
+
 # [2.4.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.3.0...v2.4.0) (2025-09-27)
 
 
@@ -39,18 +48,6 @@
 * add number validations ([34c3dc1](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/34c3dc13ff482681292fc8e2568380e7806a2ad4))
 * add object validators ([b2f76c6](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/b2f76c6888f0559f6e66f8a0d488a2b6eea353c0))
 * add utils methods and update examples ([2a2bb31](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/2a2bb31e0bbfd2fe6e28db557d20a7c3111d7daf))
-
-
-
-# [2.0.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v1.1.0...v2.0.0) (2025-06-15)
-
-
-### Features
-
-* add array validator ([3fae014](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/3fae014264166789f4cb742eeaae2c764e3ea23f))
-* add string validator ([328d6d2](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/328d6d2d0b902607fe47785ac1491b1915c7a80f))
-* add timestamp validator ([af41079](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/af4107965093ddf68e2a2ad5c36ad98f631afea3))
-* add utils to export validators and updated examples ([085ede2](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/085ede25523613334a7bc8f61a2b7972469fe08d))
 
 
 
