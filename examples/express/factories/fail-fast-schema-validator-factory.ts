@@ -5,7 +5,8 @@ import {
   string,
   array,
   number,
-  object
+  object,
+  boolean
 } from 'coffeeless-schema-validators/dist'
 import { User } from '../interfaces/user-interface'
 
@@ -27,6 +28,7 @@ export const makeFailFastSchemaValidator = (): InputValidator => {
     phoneNumber: string()
       .required()
       .valid(/^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/)
-      .build()
+      .build(),
+    isAlive: boolean().required().build()
   }).failFast()
 }

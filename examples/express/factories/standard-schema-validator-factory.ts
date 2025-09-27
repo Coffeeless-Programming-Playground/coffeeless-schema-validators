@@ -1,5 +1,6 @@
 import {
   array,
+  boolean,
   InputValidator,
   number,
   object,
@@ -27,6 +28,7 @@ export const makeStandardSchemaValidator = (): InputValidator => {
     phoneNumber: string()
       .required()
       .valid(/^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/)
-      .build()
+      .build(),
+    isAlive: boolean().required().build()
   })
 }

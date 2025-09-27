@@ -11,4 +11,5 @@ export interface User {
   password: string
   confirmPassword: string
   phoneNumber: string
+  isAlive: boolean
 }

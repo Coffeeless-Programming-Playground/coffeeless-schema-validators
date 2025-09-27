@@ -5,7 +5,8 @@ import {
   StringValidatorBuilder,
   TimestampValidatorBuilder,
   NumberValidatorBuilder,
-  ObjectValidatorBuilder
+  ObjectValidatorBuilder,
+  BooleanValidatorBuilder
 } from '@validators/validator-builders'
 
 /**
@@ -15,6 +16,15 @@ import {
  */
 export function object(message?: string) {
   return ObjectValidatorBuilder.init(message)
+}
+
+/**
+ * Initializes a boolean validator to apply validation rules on a boolean field.
+ * @param message An optional message to return an error if is boolean validation fails.
+ * @returns BooleanValidatorBuilder
+ */
+export function boolean(message?: string) {
+  return BooleanValidatorBuilder.init(message)
 }
 
 /**

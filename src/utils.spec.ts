@@ -1,12 +1,13 @@
 import { CompositeValidator } from '@validators/validation-composite'
 import {
   ArrayValidatorBuilder,
+  BooleanValidatorBuilder,
   NumberValidatorBuilder,
   ObjectValidatorBuilder,
   StringValidatorBuilder,
   TimestampValidatorBuilder
 } from '@validators/validator-builders'
-import { array, number, object, schemaValidator, string, timestamp } from './utils'
+import { array, boolean, number, object, schemaValidator, string, timestamp } from './utils'
 
 interface User {
   name: string
@@ -17,6 +18,11 @@ describe('Utils tests', () => {
   test('Ensure object returns an ObjectValidatorBuilder instance', () => {
     const validationBuilder = ObjectValidatorBuilder.init()
     expect(object()).toEqual(validationBuilder)
+  })
+
+  test('Ensure boolean returns an BooleanValidatorBuilder instance', () => {
+    const validationBuilder = BooleanValidatorBuilder.init()
+    expect(boolean()).toEqual(validationBuilder)
   })
 
   test('Ensure number returns an NumberValidatorBuilder instance', () => {
