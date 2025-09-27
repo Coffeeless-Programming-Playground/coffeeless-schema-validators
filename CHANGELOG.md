@@ -1,3 +1,12 @@
+# [2.6.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.5.0...v2.6.0) (2025-09-27)
+
+
+### Features
+
+* add max length string validator ([165fa07](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/165fa076a96ddc2d8dbf9ba972004dd794e1c280))
+
+
+
 # [2.5.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.4.1...v2.5.0) (2025-09-27)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * create BadRequestException base class to facilitate exception handling ([7fc8e9e](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/7fc8e9e1d54ae476a9a8db98af2b0ffd48d3948f))
-
-
-
-# [2.2.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.1.0...v2.2.0) (2025-06-15)
-
-
-### Features
-
-* add string field comparison validation ([1b65946](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/1b65946bf7ba6e82c47e776f4c37a8cb8a5afe66))
 
 
 
