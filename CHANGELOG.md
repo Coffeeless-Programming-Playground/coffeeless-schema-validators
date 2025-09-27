@@ -1,3 +1,12 @@
+# [2.4.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.3.0...v2.4.0) (2025-09-27)
+
+
+### Features
+
+* add boolean validators ([dc5e110](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/dc5e110ebad1d3912f8b17153b5526574eda96e2))
+
+
+
 # [2.3.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.2.0...v2.3.0) (2025-06-18)
 
 
@@ -42,15 +51,6 @@
 * add string validator ([328d6d2](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/328d6d2d0b902607fe47785ac1491b1915c7a80f))
 * add timestamp validator ([af41079](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/af4107965093ddf68e2a2ad5c36ad98f631afea3))
 * add utils to export validators and updated examples ([085ede2](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/085ede25523613334a7bc8f61a2b7972469fe08d))
-
-
-
-# [1.1.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v1.0.2...v1.1.0) (2025-06-01)
-
-
-### Features
-
-* add validationSchema utility function ([74b2804](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/74b28042965f22dcbaeaded8dae90acef03a2977))
 
 
 
