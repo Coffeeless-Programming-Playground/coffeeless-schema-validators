@@ -15,7 +15,7 @@ export class RequiredFieldInputValidator extends ChildInputValidator {
    * @returns RequiredFieldError | undefined
    */
   validate(input: any): Error | undefined {
-    if (!input[this.field]) {
+    if (input[this.field] === null || input[this.field] === undefined || input[this.field] === '') {
       return new RequiredFieldError(this.field, this.message)
     }
   }

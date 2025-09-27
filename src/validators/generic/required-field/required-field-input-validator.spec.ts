@@ -33,6 +33,15 @@ describe('RequiredFieldInputValidator', () => {
     expect(error?.message).toBe(customErrorMessage)
   })
 
+  test('Should return falsy if field is not positive', () => {
+    myObject.password = 0 as any
+    let error = sut.validate(myObject)
+    expect(error).toBeFalsy()
+    myObject.password = -1 as any
+    error = sut.validate(myObject)
+    expect(error).toBeFalsy()
+  })
+
   test('Should return falsy if field is not empty', () => {
     myObject.password = faker.random.alphaNumeric(5)
     const error = sut.validate(myObject)
