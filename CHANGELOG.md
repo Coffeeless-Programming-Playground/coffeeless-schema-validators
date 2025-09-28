@@ -1,3 +1,12 @@
+# [2.7.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.6.0...v2.7.0) (2025-09-28)
+
+
+### Features
+
+* add conditional validator ([969ab0d](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/969ab0ddf06543a1912416cb87b5ede440285d6c))
+
+
+
 # [2.6.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.5.0...v2.6.0) (2025-09-27)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add boolean validators ([dc5e110](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/dc5e110ebad1d3912f8b17153b5526574eda96e2))
-
-
-
-# [2.3.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.2.0...v2.3.0) (2025-06-18)
-
-
-### Features
-
-* create BadRequestException base class to facilitate exception handling ([7fc8e9e](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/7fc8e9e1d54ae476a9a8db98af2b0ffd48d3948f))
 
 
 
