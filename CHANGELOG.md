@@ -1,3 +1,12 @@
+# [2.9.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.8.0...v2.9.0) (2025-09-28)
+
+
+### Features
+
+* add optional validator ([030b6fd](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/030b6fd5dc3c67d928cb27b76077c9e8319f9fdc))
+
+
+
 # [2.8.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.7.0...v2.8.0) (2025-09-28)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add positive and negative validators for number field ([bfba986](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/bfba986f83e95cc4fd0171d5322e1613ddda67c3))
-
-
-
-## [2.4.1](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.4.0...v2.4.1) (2025-09-27)
-
-
-### Bug Fixes
-
-* required field only throws exception when field is null, undefined, or an empty string ([f2d8332](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/f2d8332be20680068b368f09b0e83882b09dfea3))
 
 
 
