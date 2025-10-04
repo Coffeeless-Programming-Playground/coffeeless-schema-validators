@@ -1,4 +1,12 @@
-export type DataTypes = 'array' | 'string' | 'number' | 'date' | 'timestamp'
+export type DataTypes =
+  | 'string'
+  | 'number'
+  | 'bigint'
+  | 'function'
+  | 'boolean'
+  | 'object'
+  | 'symbol'
+  | 'undefined'
 
 export const DATA_TYPES = {
   ARRAY: 'array',

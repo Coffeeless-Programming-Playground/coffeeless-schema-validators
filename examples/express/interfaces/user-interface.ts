@@ -18,4 +18,12 @@ export interface User {
   isAMillionarie: boolean
   currentBalance: number
   ip?: string
+  dogArray: {
+    weight: string
+    height: string
+  }
+  dogRegex: {
+    weight: string
+    height: string
+  }
 }

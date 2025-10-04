@@ -46,6 +46,18 @@ export const makeFailFastSchemaValidator = (): InputValidator => {
       .string()
       .required()
       .valid(/^(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)){3}$/)
+      .build(),
+    dogArray: object()
+      .pattern({
+        allowedKeys: ['weight', 'height'],
+        allowedValues: string().required().build()
+      })
+      .build(),
+    dogRegex: object()
+      .pattern({
+        allowedKeys: /weight|height/,
+        allowedValues: string().required().build()
+      })
       .build()
   }).failFast()
 }

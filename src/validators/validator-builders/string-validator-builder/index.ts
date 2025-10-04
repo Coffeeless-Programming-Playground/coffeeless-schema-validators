@@ -24,6 +24,7 @@ export class StringValidatorBuilder extends BaseValidatorBuilder<StringValidator
   /**
    * Sets the minimum length of characters a field should contain.
    * @param minLength number parameter. Represents minimum length of the input.
+   * @param message An optional message to display error text.
    * @returns StringValidatorBuilder
    */
   min(minLength: number, message?: string): StringValidatorBuilder {
@@ -34,6 +35,7 @@ export class StringValidatorBuilder extends BaseValidatorBuilder<StringValidator
   /**
    * Sets the maximum length of characters a field should contain.
    * @param maxLength number parameter. Represents maximum length of the input.
+   * @param message An optional message to display error text.
    * @returns StringValidatorBuilder
    */
   max(maxLength: number, message?: string): StringValidatorBuilder {
@@ -53,6 +55,7 @@ export class StringValidatorBuilder extends BaseValidatorBuilder<StringValidator
 
   /**
    * Verifies a given string has the same value as another string in the schema.
+   * @param anotherField An existing field in the schema.
    * @param message An optional message to display error text.
    * @returns StringValidatorBuilder
    */

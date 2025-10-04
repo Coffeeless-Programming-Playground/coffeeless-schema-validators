@@ -26,7 +26,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(400, '{"error":"Bad request exception: RequiredFieldError: name is Required"}')
     })
@@ -51,7 +59,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(
           400,
@@ -79,7 +95,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(
           400,
@@ -107,7 +131,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(
           400,
@@ -135,7 +167,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(
           400,
@@ -163,7 +203,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(
           400,
@@ -192,7 +240,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(400, '{"error":"Bad request exception: EmailFieldError: email is not valid"}')
     })
@@ -217,7 +273,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(
           400,
@@ -245,7 +309,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(400, '{"error":"Bad request exception: InvalidFieldError: phoneNumber is invalid"}')
     })
@@ -270,7 +342,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(
           400,
@@ -298,7 +378,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(
           400,
@@ -326,7 +414,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(
           400,
@@ -354,7 +450,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(
           400,
@@ -382,7 +486,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(
           400,
@@ -410,7 +522,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(
           400,
@@ -435,7 +555,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(
           400,
@@ -463,7 +591,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(
           400,
@@ -491,7 +627,15 @@ describe('Express user save example', () => {
           isAlive: 1,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(
           400,
@@ -519,7 +663,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: true,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(400, '{"error":"Bad request exception: IsFalseFieldError: isBroke is not false"}')
     })
@@ -544,7 +696,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: true,
           isAMillionaire: false,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(400, '{"error":"Bad request exception: IsFalseFieldError: isBroke is not false"}')
     })
@@ -569,7 +729,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: 100
+          currentBalance: 100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(
           400,
@@ -598,7 +766,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(
           400,
@@ -627,9 +803,89 @@ describe('Express user save example', () => {
           isBroke: false,
           isAMillionaire: true,
           currentBalance: -100,
-          ip: 'not_valid'
+          ip: 'not_valid',
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(400, '{"error":"Bad request exception: InvalidFieldError: ip is invalid"}')
+    })
+
+    test('Should return 400 if dogArray contains invalid key names', async () => {
+      await request(app)
+        .post('/v1/create')
+        .send({
+          timestamp: oneHourAhead,
+          name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
+          phoneNumber: '6107482298',
+          isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
+          currentBalance: -100,
+          dogArray: {
+            weightt: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
+        })
+        .expect(
+          400,
+          '{"error":"Bad request exception: ObjectKeyValueMatchesError: weightt in dogArray is not valid"}'
+        )
+    })
+
+    test('Should return 400 if dogArray contains invalid key values', async () => {
+      await request(app)
+        .post('/v1/create')
+        .send({
+          timestamp: oneHourAhead,
+          name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
+          phoneNumber: '6107482298',
+          isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
+          currentBalance: -100,
+          dogArray: {
+            weight: 100,
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
+        })
+        .expect(
+          400,
+          '{"error":"Bad request exception: InvalidFieldTypeError: weight is not a string"}'
+        )
     })
 
     test('Should return 200 if schema is valid', async () => {
@@ -653,7 +909,15 @@ describe('Express user save example', () => {
           isBroke: false,
           isAMillionaire: true,
           currentBalance: -100,
-          ip: '127.0.0.1'
+          ip: '127.0.0.1',
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(200, '{"message":"Saved user!"}')
     })
@@ -730,7 +994,15 @@ describe('Express user save example', () => {
           isAlive: true,
           isBroke: false,
           isAMillionaire: true,
-          currentBalance: -100
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          }
         })
         .expect(200, '{"message":"Saved user!"}')
     })

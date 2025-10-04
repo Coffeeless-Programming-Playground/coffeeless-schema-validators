@@ -1,4 +1,5 @@
-import { IsObjectValidator } from '@validators/objects'
+import { PatternValidatorProps } from '@protocols/pattern-validator-props'
+import { IsObjectValidator, ObjectKeyValueMatchesValidator } from '@validators/objects'
 import { BaseValidatorBuilder } from '../base-validator-builder'
 
 /**
@@ -14,5 +15,23 @@ export class ObjectValidatorBuilder extends BaseValidatorBuilder<ObjectValidator
    */
   static init(message?: string, optional?: boolean): ObjectValidatorBuilder {
     return new ObjectValidatorBuilder([new IsObjectValidator(message, optional)])
+  }
+
+  /**
+   * @remarks
+   * ⚠️ use this method for objects with one level of nesting.
+   *
+   * Verifies that object keys contain expected key names and that values
+   * are valid against provided schema validators.
+   * @param patternValidatorProps A {@link PatternValidatorProps}
+   *
+   * The `allowedKey` property can take either a regex expression or an array of strings
+   * to compare against each object key.
+   * @param message An optional message to display error text.
+   * @returns ObjectValidatorBuilder
+   */
+  pattern(patternValidatorProps: PatternValidatorProps, message?: string): ObjectValidatorBuilder {
+    this.validators.push(new ObjectKeyValueMatchesValidator(patternValidatorProps, message))
+    return this
   }
 }
