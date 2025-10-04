@@ -10,43 +10,15 @@ import {
 } from '@validators/index'
 
 import { StringValidatorBuilder } from '.'
+import { commonValidatorBuilderTests } from '../test-utils'
 
 describe('StringValidatorBuilder', () => {
-  test('Should return IsArrayValidator a when init is called', () => {
-    const message = 'field is not a string'
-    const validations = StringValidatorBuilder.init(message).build()
-    expect(validations).toEqual([new IsStringValidator(message)])
-  })
-
-  test('Should return RequiredFieldInputValidator', () => {
-    const validations = StringValidatorBuilder.init().required().build()
-    expect(validations).toEqual([new IsStringValidator(), new RequiredFieldInputValidator()])
-  })
-
-  test('Should return RequiredFieldInputValidator with custom message', () => {
-    const customErrorMessage = 'This field is required'
-    const validations = StringValidatorBuilder.init().required(customErrorMessage).build()
-    expect(validations).toEqual([
-      new IsStringValidator(),
-      new RequiredFieldInputValidator(customErrorMessage)
-    ])
-  })
-
-  test('Should return ValidFieldInputValidator', () => {
-    const pattern = /^[0-1]/
-    const validations = StringValidatorBuilder.init().valid(pattern).build()
-    expect(validations).toEqual([new IsStringValidator(), new ValidFieldInputValidator(pattern)])
-  })
-
-  test('Should return ValidFieldInputValidator with custom message', () => {
-    const customErrorMessage = 'This field does not match regex pattern'
-    const pattern = /^[0-1]/
-    const validations = StringValidatorBuilder.init().valid(pattern, customErrorMessage).build()
-    expect(validations).toEqual([
-      new IsStringValidator(),
-      new ValidFieldInputValidator(pattern, customErrorMessage)
-    ])
-  })
+  commonValidatorBuilderTests(
+    'StringValidatorBuilder',
+    'field is not a string',
+    StringValidatorBuilder,
+    IsStringValidator
+  )
 
   test('Should return MinLengthInputValidator', () => {
     const length = faker.datatype.number()

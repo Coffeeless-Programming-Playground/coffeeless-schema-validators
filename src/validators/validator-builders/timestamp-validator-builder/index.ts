@@ -1,14 +1,15 @@
 import { IsTimestampValidator, TimestampExpirationValidator } from '@validators/timestamp'
-import { BaseValidator } from '../base-validator-builder'
+import { BaseValidatorBuilder } from '../base-validator-builder'
 
 /**
  * Builder class that implements the Builder pattern to add validation rules on unix timestamp fields
  * meant to be use for schema/input validation.
  */
-export class TimestampValidatorBuilder extends BaseValidator<TimestampValidatorBuilder> {
+export class TimestampValidatorBuilder extends BaseValidatorBuilder<TimestampValidatorBuilder> {
   /**
    * Initializes a timestamp validation builder to add validation rules and adds an {@link IsTimestampValidator}
    * @param message An optional message to display error text when is timestamp validation fails.
+   * @param optional An optional boolean value to determine if a field should not be validated if marked as optional.
    * @returns TimestampValidatorBuilder
    */
   static init(message?: string, optional?: boolean): TimestampValidatorBuilder {

@@ -24,6 +24,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107483392',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(400, '{"error":"Bad request exception: RequiredFieldError: name is Required"}')
@@ -47,6 +49,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107483392',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(
@@ -73,6 +77,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107483392',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(
@@ -99,6 +105,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107483392',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(
@@ -125,6 +133,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107483392',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(
@@ -151,6 +161,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107483392',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(
@@ -178,6 +190,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107483392',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(400, '{"error":"Bad request exception: EmailFieldError: email is not valid"}')
@@ -201,6 +215,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(
@@ -227,6 +243,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '61074833920as',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(400, '{"error":"Bad request exception: InvalidFieldError: phoneNumber is invalid"}')
@@ -250,6 +268,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(
@@ -276,6 +296,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(
@@ -302,6 +324,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(
@@ -328,6 +352,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(
@@ -354,6 +380,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(
@@ -380,6 +408,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(
@@ -403,6 +433,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(
@@ -429,6 +461,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword2',
           phoneNumber: '6107482298',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(
@@ -455,12 +489,64 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
           isAlive: 1,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(
           400,
           '{"error":"Bad request exception: InvalidFieldTypeError: isAlive is not a boolean"}'
         )
+    })
+
+    test('Should return 400 if isBroke is true', async () => {
+      await request(app)
+        .post('/v1/create')
+        .send({
+          timestamp: oneHourAhead,
+          name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
+          phoneNumber: '6107482298',
+          isAlive: true,
+          isBroke: true,
+          isAMillionaire: true,
+          currentBalance: -100
+        })
+        .expect(400, '{"error":"Bad request exception: IsFalseFieldError: isBroke is not false"}')
+    })
+
+    test('Should return 400 if isAMillionaire is false', async () => {
+      await request(app)
+        .post('/v1/create')
+        .send({
+          timestamp: oneHourAhead,
+          name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
+          phoneNumber: '6107482298',
+          isAlive: true,
+          isBroke: true,
+          isAMillionaire: false,
+          currentBalance: -100
+        })
+        .expect(400, '{"error":"Bad request exception: IsFalseFieldError: isBroke is not false"}')
     })
 
     test('Should return 400 if currentBalance is positive', async () => {
@@ -481,6 +567,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: 100
         })
         .expect(
@@ -508,6 +596,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(
@@ -534,6 +624,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100,
           ip: 'not_valid'
         })
@@ -558,6 +650,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100,
           ip: '127.0.0.1'
         })
@@ -584,6 +678,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '61074833920as',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(400, '{"error":"Bad request exception: name is Required"}')
@@ -607,6 +703,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(400, '{"error":"Token has expired"}')
@@ -630,6 +728,8 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
           isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
           currentBalance: -100
         })
         .expect(200, '{"message":"Saved user!"}')

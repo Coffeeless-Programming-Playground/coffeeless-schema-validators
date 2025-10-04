@@ -5,16 +5,17 @@ import {
   MinArrayElementsLengthValidator,
   MinLengthArrayValidator
 } from '@validators/arrays'
-import { BaseValidator } from '../base-validator-builder'
+import { BaseValidatorBuilder } from '../base-validator-builder'
 
 /**
  * Builder class that implements the Builder pattern to add validation rules on array fields
  * meant to be use for schema/input validation.
  */
-export class ArrayValidatorBuilder extends BaseValidator<ArrayValidatorBuilder> {
+export class ArrayValidatorBuilder extends BaseValidatorBuilder<ArrayValidatorBuilder> {
   /**
    * Initializes the validator array to add validation rules and adds an {@link IsArrayValidator}
    * @param message An optional message to display error text when is array validation fails.
+   * @param optional An optional boolean value to determine if a field should not be validated if marked as optional.
    * @returns ArrayValidatorBuilder
    */
   static init(message?: string, optional?: boolean): ArrayValidatorBuilder {

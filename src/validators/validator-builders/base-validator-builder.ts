@@ -5,7 +5,7 @@ import { ValidFieldInputValidator } from '@validators/generic/valid-field'
 /**
  * Base validator class that provides common operations on all data type validators.
  */
-export class BaseValidator<T> {
+export class BaseValidatorBuilder<T> {
   protected constructor(protected readonly validators: ChildInputValidator[]) {}
 
   /**

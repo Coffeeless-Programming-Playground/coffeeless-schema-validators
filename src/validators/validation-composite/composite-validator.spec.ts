@@ -1,5 +1,4 @@
-import faker from '@faker-js/faker'
-import { mock, MockProxy } from 'jest-mock-extended'
+import { DATA_TYPES } from '@constants/data-types'
 import {
   EmailFieldError,
   InvalidFieldError,
@@ -7,16 +6,17 @@ import {
   MinLengthFieldError,
   RequiredFieldError
 } from '@errors/index'
+import faker from '@faker-js/faker'
 import {
   CompositeValidator,
   EmailInputValidator,
+  IsStringValidator,
   MinLengthInputValidator,
   RequiredFieldInputValidator,
-  ValidFieldInputValidator,
   StringValidatorBuilder,
-  IsStringValidator
+  ValidFieldInputValidator
 } from '@validators/index'
-import { DATA_TYPES } from '@constants/data-types'
+import { mock, MockProxy } from 'jest-mock-extended'
 
 interface User {
   name: string
@@ -34,7 +34,6 @@ const initialUserData: User = {
 
 describe('CompositeValidator', () => {
   const anyField = faker.random.word()
-  const anyValue = faker.random.word()
   let sut: CompositeValidator<User>
   let stringValidatorBuilder: MockProxy<StringValidatorBuilder>
   let isStringValidator: MockProxy<IsStringValidator>

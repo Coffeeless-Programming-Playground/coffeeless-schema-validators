@@ -39,6 +39,8 @@ export const makeFailFastSchemaValidator = (): InputValidator => {
       .valid(/^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/)
       .build(),
     isAlive: boolean().required().build(),
+    isBroke: boolean().isFalse().build(),
+    isAMillionarie: boolean().isTrue().build(),
     currentBalance: number().negative().build(),
     ip: optional()
       .string()

@@ -4,8 +4,16 @@ import { InputValidator } from './input-validator'
  * Base class for all child input validators.
  */
 export abstract class ChildInputValidator implements InputValidator {
+  /**
+   * The name of the input field to be validated.
+   */
   protected field!: string
 
+  /**
+   * Takes a boolean to check if a series of validations to perform on
+   * a field are optional. The default behavior is to perform validations on a field.
+   * @param optional A boolean.
+   */
   constructor(protected readonly optional: boolean = false) {}
 
   /**
