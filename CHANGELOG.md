@@ -1,3 +1,12 @@
+# [2.10.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.9.0...v2.10.0) (2025-10-04)
+
+
+### Features
+
+* add is true and is false validators for boolean types ([c1ce1b6](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/c1ce1b6a4fdfe55fa2a2edd18a6b7b3a82fb335c))
+
+
+
 # [2.9.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.8.0...v2.9.0) (2025-09-28)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add max length string validator ([165fa07](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/165fa076a96ddc2d8dbf9ba972004dd794e1c280))
-
-
-
-# [2.5.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.4.1...v2.5.0) (2025-09-27)
-
-
-### Features
-
-* add positive and negative validators for number field ([bfba986](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/bfba986f83e95cc4fd0171d5322e1613ddda67c3))
 
 
 
