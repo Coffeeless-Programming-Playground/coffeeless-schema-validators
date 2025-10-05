@@ -1,3 +1,12 @@
+# [2.11.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.10.0...v2.11.0) (2025-10-05)
+
+
+### Features
+
+* add object key and value validation ([8d78e68](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/8d78e68892bf954ae83a419bd7288c69797e4bcc))
+
+
+
 # [2.10.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.9.0...v2.10.0) (2025-10-04)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add conditional validator ([969ab0d](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/969ab0ddf06543a1912416cb87b5ede440285d6c))
-
-
-
-# [2.6.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.5.0...v2.6.0) (2025-09-27)
-
-
-### Features
-
-* add max length string validator ([165fa07](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/165fa076a96ddc2d8dbf9ba972004dd794e1c280))
 
 
 
