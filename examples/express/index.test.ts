@@ -34,6 +34,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(400, '{"error":"Bad request exception: RequiredFieldError: name is Required"}')
@@ -67,6 +74,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -103,6 +117,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -139,6 +160,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -175,6 +203,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -211,6 +246,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -248,6 +290,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(400, '{"error":"Bad request exception: EmailFieldError: email is not valid"}')
@@ -281,6 +330,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -317,6 +373,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(400, '{"error":"Bad request exception: InvalidFieldError: phoneNumber is invalid"}')
@@ -350,6 +413,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -386,6 +456,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -422,6 +499,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -458,6 +542,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -494,6 +585,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -530,6 +628,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -563,6 +668,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -599,6 +711,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -635,6 +754,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -671,6 +797,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(400, '{"error":"Bad request exception: IsFalseFieldError: isBroke is not false"}')
@@ -704,6 +837,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(400, '{"error":"Bad request exception: IsFalseFieldError: isBroke is not false"}')
@@ -737,6 +877,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -774,6 +921,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -811,6 +965,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(400, '{"error":"Bad request exception: InvalidFieldError: ip is invalid"}')
@@ -844,6 +1005,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
@@ -880,11 +1048,148 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(
           400,
           '{"error":"Bad request exception: InvalidFieldTypeError: weight is not a string"}'
+        )
+    })
+
+    test('Should return 400 if excludeRecipients input is malformed', async () => {
+      await request(app)
+        .post('/v1/create')
+        .send({
+          timestamp: oneHourAhead,
+          name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
+          phoneNumber: '6107482298',
+          isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine']
+          }
+        })
+        .expect(
+          400,
+          '{"error":"Bad request exception: ValidNestedFieldError: Your input on field excludeRecipients is malformed."}'
+        )
+    })
+
+    test('Should return 400 if excludeRecipients contains invalid values', async () => {
+      await request(app)
+        .post('/v1/create')
+        .send({
+          timestamp: oneHourAhead,
+          name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
+          phoneNumber: '6107482298',
+          isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'tonny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabrielas'
+            }
+          }
+        })
+        .expect(
+          400,
+          '{"error":"Bad request exception: ValidNestedFieldError: user in excludeRecipients field is not valid"}'
+        )
+    })
+
+    test('Should return 400 if nested boy field has invalid name', async () => {
+      await request(app)
+        .post('/v1/create')
+        .send({
+          timestamp: oneHourAhead,
+          name: 'Frédéric Chopin',
+          lastName: 'Chintalapani Chopinin',
+          email: 'chopin@gmail.com',
+          pets: ['cat', 'dog'],
+          age: 18,
+          info: {
+            address: 'home',
+            zipCode: 12345
+          },
+          password: 'mypassword',
+          confirmPassword: 'mypassword',
+          phoneNumber: '6107482298',
+          isAlive: true,
+          isBroke: false,
+          isAMillionaire: true,
+          currentBalance: -100,
+          dogArray: {
+            weight: '100',
+            height: '100'
+          },
+          dogRegex: {
+            weight: '100',
+            height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela',
+              boy: {
+                name: 1,
+                lastName: 'Albert'
+              }
+            }
+          }
+        })
+        .expect(
+          400,
+          '{"error":"Bad request exception: ValidNestedFieldError: boy in nested field is not valid"}'
         )
     })
 
@@ -917,6 +1222,17 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela',
+              boy: {
+                name: 'Alberto',
+                lastName: 'Albert'
+              }
+            }
           }
         })
         .expect(200, '{"message":"Saved user!"}')
@@ -1002,6 +1318,13 @@ describe('Express user save example', () => {
           dogRegex: {
             weight: '100',
             height: '100'
+          },
+          excludeRecipients: {
+            user: ['diego', 'ronny'],
+            application: ['blog-services', 'medicine'],
+            nested: {
+              girl: 'gabriela'
+            }
           }
         })
         .expect(200, '{"message":"Saved user!"}')

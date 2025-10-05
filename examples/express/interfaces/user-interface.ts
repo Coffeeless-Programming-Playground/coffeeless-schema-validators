@@ -1,3 +1,15 @@
+export interface Boy {
+  name: string
+  lastName: string
+}
+export interface ExcludeRecipients {
+  user: string[]
+  application: string[]
+  nested: {
+    girl: string
+    boy: Boy
+  }
+}
 export interface User {
   timestamp: number
   name: string
@@ -26,4 +38,5 @@ export interface User {
     weight: string
     height: string
   }
+  excludeRecipients: ExcludeRecipients
 }

@@ -8,7 +8,7 @@ export function commonValidatorBuilderTests(
   baseValidatorBuilder: any,
   baseValidator: { new (...args: any[]): any }
 ) {
-  test(`Should return ${validatorBuilderName} a when init is called`, () => {
+  test(`Should return ${validatorBuilderName} when init is called`, () => {
     const validations = baseValidatorBuilder.init(initMessage).build()
     expect(validations).toEqual([new baseValidator(initMessage)])
   })

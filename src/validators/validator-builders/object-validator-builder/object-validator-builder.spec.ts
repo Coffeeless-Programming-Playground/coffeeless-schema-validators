@@ -2,8 +2,9 @@ import { PatternValidatorProps } from '@protocols/pattern-validator-props'
 import { RequiredFieldInputValidator, ValidFieldInputValidator } from '@validators/index'
 import { IsObjectValidator, ObjectKeyValueMatchesValidator } from '@validators/objects'
 import { ObjectValidatorBuilder } from '.'
-import { array } from '../../../utils'
+import { array, number, string } from '../../../utils'
 import { commonValidatorBuilderTests } from '../test-utils'
+import { ObjectValidator } from '@protocols/object-validator'
 
 describe('ObjectValidatorBuilder', () => {
   commonValidatorBuilderTests(
@@ -13,7 +14,22 @@ describe('ObjectValidatorBuilder', () => {
     IsObjectValidator
   )
 
-  test('Should return ObjectKeyMatchesValidator with string array key names', () => {
+  test('Should return ObjectValidatorBuilder with an IsObjectValidator containing an objectValidator', () => {
+    const objectSchemaValidation: ObjectValidator = {
+      profile: {
+        address: {
+          street: string().required().build(),
+          city: string().required().build()
+        },
+        phoneNumber: number().required().build()
+      },
+      anotherField: string().required().build()
+    }
+    const validations = ObjectValidatorBuilder.init(objectSchemaValidation).build()
+    expect(validations).toEqual([new IsObjectValidator(objectSchemaValidation)])
+  })
+
+  test('Should return ObjectKeyValueMatchesValidator with string array key names', () => {
     const patternValidatorProps: PatternValidatorProps = {
       allowedKeys: ['user', 'application'],
       allowedValues: array()
@@ -27,7 +43,7 @@ describe('ObjectValidatorBuilder', () => {
     ])
   })
 
-  test('Should return ObjectKeyMatchesValidator with string array key names and with custom message', () => {
+  test('Should return ObjectKeyValueMatchesValidator with string array key names and with custom message', () => {
     const customErrorMessage = 'Object fields are not valid'
     const patternValidatorProps: PatternValidatorProps = {
       allowedKeys: ['user', 'application'],
@@ -44,7 +60,7 @@ describe('ObjectValidatorBuilder', () => {
     ])
   })
 
-  test('Should return ObjectKeyMatchesValidator with regex key names', () => {
+  test('Should return ObjectKeyValueMatchesValidator with regex key names', () => {
     const patternValidatorProps: PatternValidatorProps = {
       allowedKeys: /user|application/,
       allowedValues: array()
@@ -58,7 +74,7 @@ describe('ObjectValidatorBuilder', () => {
     ])
   })
 
-  test('Should return ObjectKeyMatchesValidator with regex key names and with custom message', () => {
+  test('Should return ObjectKeyValueMatchesValidator with regex key names and with custom message', () => {
     const customErrorMessage = 'Object fields are not valid'
     const patternValidatorProps: PatternValidatorProps = {
       allowedKeys: /user|application/,

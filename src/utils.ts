@@ -1,4 +1,5 @@
 import { ConditionalValidatorProps } from '@protocols/conditional-validator-props'
+import { ObjectValidator } from '@protocols/object-validator'
 import { ValidationSchema } from '@protocols/validation-schema'
 import { ConditionalValidator } from '@validators/conditional-validator'
 import { ForbiddenFieldInputValidator } from '@validators/forbidden-validator'
@@ -12,13 +13,28 @@ import {
   TimestampValidatorBuilder
 } from '@validators/validator-builders'
 
+export function object<T = any>(objectValidator?: ObjectValidator<T>): ObjectValidatorBuilder
+export function object<T = any>(message?: string): ObjectValidatorBuilder
+export function object<T = any>(
+  objectValidator: ObjectValidator<T>,
+  message: string
+): ObjectValidatorBuilder
+
 /**
  * Initializes an object validator to apply validation rules on an object field.
  * @param message An optional message to return an error if is object validation fails.
  * @returns ObjectValidatorBuilder
  */
-export function object(message?: string) {
-  return ObjectValidatorBuilder.init(message)
+export function object<T = any>(param1?: unknown, param2?: unknown) {
+  if (param1 === undefined && param2 === undefined) {
+    return ObjectValidatorBuilder.init<T>()
+  } else if (typeof param1 === 'string') {
+    return ObjectValidatorBuilder.init<T>(undefined, param1)
+  } else if (typeof param1 !== 'string' && param2 === undefined) {
+    return ObjectValidatorBuilder.init<T>(param1 as ObjectValidator<T>)
+  } else {
+    return ObjectValidatorBuilder.init<T>(param1 as ObjectValidator<T>, param2 as string)
+  }
 }
 
 /**
@@ -92,8 +108,26 @@ export function forbidden(message?: string) {
  * @returns A set of validator builders.
  */
 export function optional() {
+  function object<T = any>(objectValidator?: ObjectValidator<T>): ObjectValidatorBuilder
+  function object<T = any>(message?: string): ObjectValidatorBuilder
+  function object<T = any>(
+    objectValidator: ObjectValidator<T>,
+    message: string
+  ): ObjectValidatorBuilder
+  function object<T = any>(param1?: unknown, param2?: unknown) {
+    if (param1 === undefined && param2 === undefined) {
+      return ObjectValidatorBuilder.init<T>(undefined, undefined, true)
+    } else if (typeof param1 === 'string') {
+      return ObjectValidatorBuilder.init<T>(undefined, param1, true)
+    } else if (typeof param1 !== 'string' && param2 === undefined) {
+      return ObjectValidatorBuilder.init<T>(param1 as ObjectValidator<T>, undefined, true)
+    } else {
+      return ObjectValidatorBuilder.init<T>(param1 as ObjectValidator<T>, param2 as string, true)
+    }
+  }
+
   return {
-    object: (message?: string) => ObjectValidatorBuilder.init(message, true),
+    object,
     boolean: (message?: string) => BooleanValidatorBuilder.init(message, true),
     number: (message?: string) => NumberValidatorBuilder.init(message, true),
     array: (message?: string) => ArrayValidatorBuilder.init(message, true),

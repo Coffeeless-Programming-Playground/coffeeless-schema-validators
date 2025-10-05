@@ -22,6 +22,7 @@ import {
   timestamp,
   when
 } from './utils'
+import { ObjectValidator } from '@protocols/object-validator'
 
 interface User {
   name: string
@@ -32,6 +33,43 @@ describe('Utils tests', () => {
   test('Ensure object returns an ObjectValidatorBuilder instance', () => {
     const validationBuilder = ObjectValidatorBuilder.init()
     expect(object()).toEqual(validationBuilder)
+  })
+
+  test('Ensure object returns an ObjectValidatorBuilder instance with message', () => {
+    const customMessage = 'something went wrong'
+    const validationBuilder = ObjectValidatorBuilder.init(undefined, customMessage)
+    expect(object(customMessage)).toEqual(validationBuilder)
+  })
+
+  test('Ensure object returns an ObjectValidatorBuilder instance with object validator', () => {
+    const objectSchemaValidation: ObjectValidator = {
+      profile: {
+        address: {
+          street: string().required().build(),
+          city: string().required().build()
+        },
+        phoneNumber: number().required().build()
+      },
+      anotherField: string().required().build()
+    }
+    const validationBuilder = ObjectValidatorBuilder.init(objectSchemaValidation)
+    expect(object(objectSchemaValidation)).toEqual(validationBuilder)
+  })
+
+  test('Ensure object returns an ObjectValidatorBuilder instance with object validator and custom message', () => {
+    const customMessage = 'something went wrong'
+    const objectSchemaValidation: ObjectValidator = {
+      profile: {
+        address: {
+          street: string().required().build(),
+          city: string().required().build()
+        },
+        phoneNumber: number().required().build()
+      },
+      anotherField: string().required().build()
+    }
+    const validationBuilder = ObjectValidatorBuilder.init(objectSchemaValidation, customMessage)
+    expect(object(objectSchemaValidation, customMessage)).toEqual(validationBuilder)
   })
 
   test('Ensure boolean returns an BooleanValidatorBuilder instance', () => {
@@ -74,9 +112,28 @@ describe('Utils tests', () => {
     expect(forbidden()).toEqual(validationBuilder)
   })
 
-  test('Ensure optional returns an a set of field validator builders', () => {
+  test('Ensure optional returns a set of field validator builders', () => {
     const message = faker.random.word()
-    expect(optional().object(message)).toEqual(ObjectValidatorBuilder.init(message, true))
+    const objectSchemaValidation: ObjectValidator = {
+      profile: {
+        address: {
+          street: string().required().build(),
+          city: string().required().build()
+        },
+        phoneNumber: number().required().build()
+      },
+      anotherField: string().required().build()
+    }
+    expect(optional().object()).toEqual(ObjectValidatorBuilder.init(undefined, undefined, true))
+    expect(optional().object(message)).toEqual(
+      ObjectValidatorBuilder.init(undefined, message, true)
+    )
+    expect(optional().object(objectSchemaValidation)).toEqual(
+      ObjectValidatorBuilder.init(objectSchemaValidation, undefined, true)
+    )
+    expect(optional().object(objectSchemaValidation, message)).toEqual(
+      ObjectValidatorBuilder.init(objectSchemaValidation, message, true)
+    )
     expect(optional().boolean(message)).toEqual(BooleanValidatorBuilder.init(message, true))
     expect(optional().number(message)).toEqual(NumberValidatorBuilder.init(message, true))
     expect(optional().array(message)).toEqual(ArrayValidatorBuilder.init(message, true))

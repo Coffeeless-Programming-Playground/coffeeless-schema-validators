@@ -41,6 +41,14 @@ describe('ConditionalValidator', () => {
     expect(error?.message).toBe(`${field} value must be at least ${11}`)
   })
 
+  test('Should not perform validation if the validator is optional and the field is not present', () => {
+    sut = new ConditionalValidator(targetField, conditionalValidator, true)
+    sut.setField(field)
+    myObject[field] = undefined as any
+    const error = sut.validate(myObject)
+    expect(error).toBeFalsy()
+  })
+
   /**
    * This test acts as the user fixing a validation error through a form input update.
    */

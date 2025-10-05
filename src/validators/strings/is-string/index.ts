@@ -19,6 +19,8 @@ export class IsStringValidator extends ChildInputValidator {
    * @returns InvalidFieldTypeError | undefined
    */
   validate(input: any): Error | undefined {
+    if (this.isOptionalAndFieldIsNotPresent(input)) return
+
     if (typeof input[this.field] !== 'string') {
       return new InvalidFieldTypeError(this.field, `a ${DATA_TYPES.STRING}`, this.message)
     }

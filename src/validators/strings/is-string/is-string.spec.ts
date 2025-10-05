@@ -44,6 +44,14 @@ describe('IsStringValidator', () => {
     expect(error).toBeFalsy()
   })
 
+  test('Should not perform validation if the validator is optional and the field is not present', () => {
+    sut = new IsStringValidator(undefined, true)
+    sut.setField(field)
+    myObject[field] = undefined as any
+    const error = sut.validate(myObject)
+    expect(error).toBeFalsy()
+  })
+
   /**
    * This test acts as the user fixing a validation error through a form input update.
    */

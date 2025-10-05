@@ -11,7 +11,7 @@ import {
   timestamp,
   when
 } from 'coffeeless-schema-validators/dist'
-import { User } from '../interfaces/user-interface'
+import { Boy, ExcludeRecipients, User } from '../interfaces/user-interface'
 
 export const makeStandardSchemaValidator = (): InputValidator => {
   return schemaValidator<User>({
@@ -58,6 +58,25 @@ export const makeStandardSchemaValidator = (): InputValidator => {
         allowedKeys: /weight|height/,
         allowedValues: string().required().build()
       })
-      .build()
+      .build(),
+    excludeRecipients: object<ExcludeRecipients>({
+      user: array()
+        .elementsMatchPattern(/diego|ronny/)
+        .build(),
+      application: array()
+        .elementsMatchPattern(/blog-services|medicine/)
+        .build(),
+      nested: {
+        girl: string()
+          .valid(/gabriela/)
+          .build(),
+        boy: optional()
+          .object<Boy>({
+            name: string().required().build(),
+            lastName: string().required().build()
+          })
+          .build()
+      }
+    }).build()
   })
 }

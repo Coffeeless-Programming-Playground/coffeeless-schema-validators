@@ -20,6 +20,8 @@ export class ConditionalValidator extends ChildInputValidator {
    * @returns Error | undefined
    */
   validate(input: any): Error | undefined {
+    if (this.isOptionalAndFieldIsNotPresent(input)) return
+
     try {
       for (const validation of this.conditionalValidator.is) {
         validation.setField(this.targetField)

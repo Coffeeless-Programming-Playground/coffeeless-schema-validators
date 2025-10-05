@@ -19,6 +19,8 @@ export class IsTimestampValidator extends ChildInputValidator {
    * @returns InvalidFieldTypeError | undefined
    */
   validate(input: any): Error | undefined {
+    if (this.isOptionalAndFieldIsNotPresent(input)) return
+
     if (
       input[this.field] !== undefined &&
       (typeof input[this.field] !== 'number' ||

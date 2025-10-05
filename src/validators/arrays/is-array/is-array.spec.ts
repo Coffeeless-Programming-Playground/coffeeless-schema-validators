@@ -38,6 +38,14 @@ describe('IsArrayValidator', () => {
     expect(error?.message).toBe(customErrorMessage)
   })
 
+  test('Should not perform validation if the validator is optional and the field is not present', () => {
+    sut = new IsArrayValidator(undefined, true)
+    sut.setField(field)
+    myObject[field] = undefined
+    const error = sut.validate(myObject)
+    expect(error).toBeFalsy()
+  })
+
   test('Should return falsy if field is an array', () => {
     myObject.animals = ['mouse', 'cat', 'dog']
     const error = sut.validate(myObject)
