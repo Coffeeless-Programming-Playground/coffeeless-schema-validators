@@ -1,3 +1,12 @@
+# [2.12.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.11.0...v2.12.0) (2025-10-05)
+
+
+### Features
+
+* add nested object validation ([35a55e6](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/35a55e62ed5579df083c3d225b71149fa64fd7a6))
+
+
+
 # [2.11.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.10.0...v2.11.0) (2025-10-05)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add forbidden validator ([ed69865](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/ed69865831ca351f4d8a18a95d684f2a29e3de76))
-
-
-
-# [2.7.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.6.0...v2.7.0) (2025-09-28)
-
-
-### Features
-
-* add conditional validator ([969ab0d](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/969ab0ddf06543a1912416cb87b5ede440285d6c))
 
 
 
