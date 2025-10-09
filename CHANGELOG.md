@@ -1,3 +1,12 @@
+## [2.12.1](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.12.0...v2.12.1) (2025-10-09)
+
+
+### Bug Fixes
+
+* update utility functions to handle data type validation ensuring field is not undefined ([e778dd8](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/e778dd8f5cf4d433729faa4887cd511857cf2317))
+
+
+
 # [2.12.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.11.0...v2.12.0) (2025-10-05)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add optional validator ([030b6fd](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/030b6fd5dc3c67d928cb27b76077c9e8319f9fdc))
-
-
-
-# [2.8.0](https://github.com/coffeeless-programming/coffeeless-schema-validators/compare/v2.7.0...v2.8.0) (2025-09-28)
-
-
-### Features
-
-* add forbidden validator ([ed69865](https://github.com/coffeeless-programming/coffeeless-schema-validators/commit/ed69865831ca351f4d8a18a95d684f2a29e3de76))
 
 
 
