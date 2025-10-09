@@ -40,7 +40,7 @@ export const makeFailFastSchemaValidator = (): InputValidator => {
       .build(),
     isAlive: boolean().required().build(),
     isBroke: boolean().isFalse().build(),
-    isAMillionarie: boolean().isTrue().build(),
+    isAMillionaire: boolean().isTrue().build(),
     currentBalance: number().negative().build(),
     ip: optional()
       .string()
@@ -55,20 +55,20 @@ export const makeFailFastSchemaValidator = (): InputValidator => {
       .build(),
     dogRegex: object()
       .pattern({
-        allowedKeys: /weight|height/,
+        allowedKeys: /^(weight|height)$/,
         allowedValues: string().required().build()
       })
       .build(),
     excludeRecipients: object<ExcludeRecipients>({
       user: array()
-        .elementsMatchPattern(/diego|ronny/)
+        .elementsMatchPattern(/^(diego|ronny)$/)
         .build(),
       application: array()
-        .elementsMatchPattern(/blog-services|medicine/)
+        .elementsMatchPattern(/^(blog-services|medicine)$/)
         .build(),
       nested: {
         girl: string()
-          .valid(/gabriela/)
+          .valid(/^gabriela$/)
           .build(),
         boy: optional()
           .object<Boy>({

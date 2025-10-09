@@ -13,11 +13,12 @@
     "declaration": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "sourceMap": true,
     "paths": {
       "@errors/*": ["errors/*"],
       "@protocols/*": ["protocols/*"],
       "@validators/*": ["validators/*"],
-      "@constants/*": ["constants/*"],
+      "@constants/*": ["constants/*"]
     },
     "strict": true
   },

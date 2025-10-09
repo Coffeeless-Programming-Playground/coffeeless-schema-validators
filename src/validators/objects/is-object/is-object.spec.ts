@@ -44,7 +44,7 @@ const objectSchemaValidation: ObjectValidator<User> = {
   anotherField: string().required().build()
 }
 
-describe('IsObjectValidator', () => {
+describe('IsObjectValidator tests', () => {
   let sut: IsObjectValidator
   const field = 'user'
   let myObject = {
@@ -126,8 +126,14 @@ describe('IsObjectValidator', () => {
     sut = new IsObjectValidator(objectSchemaValidation)
     sut.setField(field)
     const error = sut.validate(myObject)
-    expect(error).toEqual(new ValidNestedFieldError('phoneNumber', 'profile'))
-    expect(error?.message).toBe('phoneNumber in profile field is not valid')
+    expect(error).toEqual(
+      new InvalidFieldTypeError(
+        'phoneNumber',
+        DATA_TYPES.NUMBER,
+        'phoneNumber is not a number in profile'
+      )
+    )
+    expect(error?.message).toBe('phoneNumber is not a number in profile')
   })
 
   test('Should return ValidNestedFieldError with custom message if object nested field value is invalid', () => {
@@ -136,7 +142,7 @@ describe('IsObjectValidator', () => {
     sut = new IsObjectValidator(objectSchemaValidation, customErrorMessage)
     sut.setField(field)
     const error = sut.validate(myObject)
-    expect(error).toEqual(new ValidNestedFieldError('street', 'address', customErrorMessage))
+    expect(error).toEqual(new ValidNestedFieldError(customErrorMessage))
     expect(error?.message).toBe(customErrorMessage)
   })
 
@@ -149,7 +155,7 @@ describe('IsObjectValidator', () => {
     sut = new IsObjectValidator(objectSchemaValidation, customErrorMessage)
     sut.setField(field)
     const error = sut.validate(myObject)
-    expect(error).toEqual(new ValidNestedFieldError('street', 'address', customErrorMessage))
+    expect(error).toEqual(new ValidNestedFieldError(customErrorMessage))
     expect(error?.message).toBe(customErrorMessage)
   })
 
@@ -161,8 +167,10 @@ describe('IsObjectValidator', () => {
     sut = new IsObjectValidator(objectSchemaValidation)
     sut.setField(field)
     let error = sut.validate(myObject)
-    expect(error).toEqual(new ValidNestedFieldError('street', 'address'))
-    expect(error?.message).toBe('street in address field is not valid')
+    expect(error).toEqual(
+      new InvalidFieldTypeError('street', DATA_TYPES.STRING, 'street is not a string in address')
+    )
+    expect(error?.message).toBe('street is not a string in address')
 
     myObject.user.profile.address.street = '21st'
     sut = new IsObjectValidator(objectSchemaValidation)

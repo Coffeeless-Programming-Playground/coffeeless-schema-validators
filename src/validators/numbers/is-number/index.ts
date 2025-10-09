@@ -21,7 +21,7 @@ export class IsNumberValidator extends ChildInputValidator {
   validate(input: any): Error | undefined {
     if (this.isOptionalAndFieldIsNotPresent(input)) return
 
-    if (input[this.field] !== undefined && typeof input[this.field] !== 'number') {
+    if (typeof input[this.field] !== 'number') {
       return new InvalidFieldTypeError(this.field, `a ${DATA_TYPES.NUMBER}`, this.message)
     }
   }

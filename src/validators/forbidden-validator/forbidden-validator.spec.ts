@@ -21,7 +21,7 @@ describe('ForbiddenFieldInputValidator', () => {
   test('Should return error if field is present in the schema without custom message', () => {
     const error = sut.validate(myObject)
     expect(error).toEqual(new ForbiddenFieldError(field))
-    expect(error?.message).toBe(`${field} is not a valid field`)
+    expect(error?.message).toBe(`${field} is a forbidden field`)
   })
 
   test('Should return error if value is present in the schema with custom message', () => {
@@ -45,7 +45,7 @@ describe('ForbiddenFieldInputValidator', () => {
   test('Should return error first and then falsy if field is not present in the schema', () => {
     let error = sut.validate(myObject)
     expect(error).toEqual(new ForbiddenFieldError(field))
-    expect(error?.message).toBe(`${field} is not a valid field`)
+    expect(error?.message).toBe(`${field} is a forbidden field`)
 
     myObject.age = undefined as any
     error = sut.validate(myObject)

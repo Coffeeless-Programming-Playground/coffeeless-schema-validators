@@ -827,7 +827,7 @@ describe('Express user save example', () => {
           confirmPassword: 'mypassword',
           phoneNumber: '6107482298',
           isAlive: true,
-          isBroke: true,
+          isBroke: false,
           isAMillionaire: false,
           currentBalance: -100,
           dogArray: {
@@ -846,7 +846,10 @@ describe('Express user save example', () => {
             }
           }
         })
-        .expect(400, '{"error":"Bad request exception: IsFalseFieldError: isBroke is not false"}')
+        .expect(
+          400,
+          '{"error":"Bad request exception: IsTrueFieldError: isAMillionaire is not true"}'
+        )
     })
 
     test('Should return 400 if currentBalance is positive', async () => {
@@ -932,7 +935,7 @@ describe('Express user save example', () => {
         })
         .expect(
           400,
-          '{"error":"Bad request exception: ForbiddenFieldError: surname is not a valid field"}'
+          '{"error":"Bad request exception: ForbiddenFieldError: surname is a forbidden field"}'
         )
     })
 
@@ -1133,7 +1136,7 @@ describe('Express user save example', () => {
             height: '100'
           },
           excludeRecipients: {
-            user: ['diego', 'tonny'],
+            user: ['diego', 'ronny'],
             application: ['blog-services', 'medicine'],
             nested: {
               girl: 'gabrielas'
@@ -1142,7 +1145,7 @@ describe('Express user save example', () => {
         })
         .expect(
           400,
-          '{"error":"Bad request exception: ValidNestedFieldError: user in excludeRecipients field is not valid"}'
+          '{"error":"Bad request exception: InvalidFieldError: girl is invalid in nested"}'
         )
     })
 
@@ -1189,7 +1192,7 @@ describe('Express user save example', () => {
         })
         .expect(
           400,
-          '{"error":"Bad request exception: ValidNestedFieldError: boy in nested field is not valid"}'
+          '{"error":"Bad request exception: InvalidFieldTypeError: name is not a string in boy in nested"}'
         )
     })
 

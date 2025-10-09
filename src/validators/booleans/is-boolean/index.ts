@@ -21,7 +21,7 @@ export class IsBooleanValidator extends ChildInputValidator {
   validate(input: any): Error | undefined {
     if (this.isOptionalAndFieldIsNotPresent(input)) return
 
-    if (input[this.field] !== undefined && typeof input[this.field] !== 'boolean') {
+    if (typeof input[this.field] !== 'boolean') {
       return new InvalidFieldTypeError(this.field, `a ${DATA_TYPES.BOOLEAN}`, this.message)
     }
   }

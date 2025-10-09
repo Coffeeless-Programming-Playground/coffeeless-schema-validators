@@ -21,7 +21,7 @@ export class IsArrayValidator extends ChildInputValidator {
   validate(input: any): Error | undefined {
     if (this.isOptionalAndFieldIsNotPresent(input)) return
 
-    if (input[this.field] && !Array.isArray(input[this.field])) {
+    if (!Array.isArray(input[this.field])) {
       return new InvalidFieldTypeError(this.field, `an ${DATA_TYPES.ARRAY}`, this.message)
     }
   }

@@ -27,7 +27,7 @@ export interface User {
   phoneNumber: string
   isAlive: boolean
   isBroke: boolean
-  isAMillionarie: boolean
+  isAMillionaire: boolean
   currentBalance: number
   ip?: string
   dogArray: {

@@ -37,7 +37,11 @@ export class IsObjectValidator extends ChildInputValidator {
     )
   }
 
-  private validateRecursively(schema: any, target: any, parentField: string): Error | undefined {
+  private validateRecursively(
+    schema: ObjectValidator,
+    target: any,
+    parentField: string
+  ): Error | undefined {
     if (target === undefined || parentField === undefined) {
       return new ValidNestedFieldError(`Your input on field ${this.field} is malformed.`)
     }
@@ -46,8 +50,11 @@ export class IsObjectValidator extends ChildInputValidator {
       if (Array.isArray(value)) {
         for (const validator of value) {
           validator.setField(key)
-          if (validator.validate(target)) {
-            return new ValidNestedFieldError(key, parentField, this.message)
+          const error = validator.validate(target)
+          if (error) {
+            if (this.message) return new ValidNestedFieldError(this.message)
+            error.message = error.message += ` in ${parentField}`
+            return error
           }
         }
       } else {

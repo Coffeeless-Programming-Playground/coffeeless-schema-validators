@@ -22,12 +22,11 @@ export class IsTimestampValidator extends ChildInputValidator {
     if (this.isOptionalAndFieldIsNotPresent(input)) return
 
     if (
-      input[this.field] !== undefined &&
-      (typeof input[this.field] !== 'number' ||
-        !Number.isFinite(input[this.field]) ||
-        !Number.isInteger(input[this.field]) ||
-        input[this.field] <= 0 ||
-        input[this.field] >= 9999999999)
+      typeof input[this.field] !== 'number' ||
+      !Number.isFinite(input[this.field]) ||
+      !Number.isInteger(input[this.field]) ||
+      input[this.field] <= 0 ||
+      input[this.field] >= 9999999999
     ) {
       return new InvalidFieldTypeError(this.field, `a ${DATA_TYPES.TIMESTAMP}`, this.message)
     }
