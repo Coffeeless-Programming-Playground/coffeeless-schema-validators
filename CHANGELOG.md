@@ -1,4 +1,13 @@
-# 2.13.0 (2025-11-19)
+# [2.14.0](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/compare/v2.13.0...v2.14.0) (2025-11-19)
+
+
+### Features
+
+* update test debug ([d676bb5](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/commit/d676bb510fff36031c867829f854c3a3b0e16baf))
+
+
+
+# [2.13.0](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/compare/7b07b0896092a54e835f700914c6ccebd569ef84...v2.13.0) (2025-11-19)
 
 
 ### Bug Fixes
