@@ -23,9 +23,11 @@
   "keywords": [
     "coffeeless",
     "schema",
-    "validators"
+    "validators",
+    "nodejs",
+    "express"
   ],
-  "author": "",
+  "author": "Diego Salas Noain <dominicsc2hs@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/issues"
