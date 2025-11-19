@@ -1,3 +1,12 @@
+## [2.14.1](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/compare/v2.14.0...v2.14.1) (2025-11-19)
+
+
+### Bug Fixes
+
+* update package json ([ddcb2b1](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/commit/ddcb2b1a5cc739310f5a502e894faec5fb5d8598))
+
+
+
 # [2.14.0](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/compare/v2.13.0...v2.14.0) (2025-11-19)
 
 
