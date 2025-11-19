@@ -16,9 +16,21 @@
     "clean": "rimraf dist/",
     "prepare": "husky install"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators.git"
+  },
+  "keywords": [
+    "coffeeless",
+    "schema",
+    "validators"
+  ],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/issues"
+  },
+  "homepage": "https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators#readme",
   "files": [
     "dist",
     "README.md",
