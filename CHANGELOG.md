@@ -1,3 +1,12 @@
+## [2.14.2](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/compare/v2.14.1...v2.14.2) (2025-11-20)
+
+
+### Bug Fixes
+
+* add useless test ([afce696](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/commit/afce6960edec26f01c34f3f5441d10f16c92adb7))
+
+
+
 ## [2.14.1](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/compare/v2.14.0...v2.14.1) (2025-11-19)
 
 
