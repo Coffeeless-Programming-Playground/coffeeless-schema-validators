@@ -12,7 +12,7 @@
     "test:staged": "npm test --findRelatedTests",
     "test:watch": "npm test -- --watch --no-cache",
     "test:ci": "npm test -- --coverage",
-    "test:debug": "npm test utils.spec.ts",
+    "test:debug": "npm test useless.spec.ts",
     "clean": "rimraf dist/",
     "prepare": "husky install"
   },
