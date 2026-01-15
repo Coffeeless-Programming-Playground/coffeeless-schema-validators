@@ -1,3 +1,12 @@
+# [2.15.0](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/compare/v2.14.2...v2.15.0) (2026-01-15)
+
+
+### Features
+
+* change package scope ([9686f75](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/commit/9686f75fc2219bd2ff2d7e4bb8718ea441d8a722))
+
+
+
 ## [2.14.2](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/compare/v2.14.1...v2.14.2) (2025-11-20)
 
 
