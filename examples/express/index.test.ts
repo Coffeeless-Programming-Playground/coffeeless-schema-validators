@@ -643,46 +643,6 @@ describe('Express user save example', () => {
         )
     })
 
-    test('Should return 400 if info object is empty', async () => {
-      await request(app)
-        .post('/v1/create')
-        .send({
-          timestamp: oneHourAhead,
-          name: 'Frédéric Chopin',
-          lastName: 'Chintalapani Chopinin',
-          email: 'chopin@gmail.com',
-          pets: ['cat', 'dog'],
-          age: 18,
-          info: {},
-          password: 'mypassword',
-          confirmPassword: 'mypassword',
-          phoneNumber: '6107482298',
-          isAlive: true,
-          isBroke: false,
-          isAMillionaire: true,
-          currentBalance: -100,
-          dogArray: {
-            weight: '100',
-            height: '100'
-          },
-          dogRegex: {
-            weight: '100',
-            height: '100'
-          },
-          excludeRecipients: {
-            user: ['diego', 'ronny'],
-            application: ['blog-services', 'medicine'],
-            nested: {
-              girl: 'gabriela'
-            }
-          }
-        })
-        .expect(
-          400,
-          '{"error":"Bad request exception: InvalidFieldTypeError: info is not an object"}'
-        )
-    })
-
     test('Should return 400 if passwords do not match', async () => {
       await request(app)
         .post('/v1/create')

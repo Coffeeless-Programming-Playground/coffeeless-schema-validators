@@ -25,8 +25,7 @@ export class IsObjectValidator extends ChildInputValidator {
     if (
       typeof input[this.field] !== 'object' ||
       input[this.field] === null ||
-      Array.isArray(input[this.field]) ||
-      Object.keys(input[this.field]).length === 0
+      Array.isArray(input[this.field])
     ) {
       return new InvalidFieldTypeError(this.field, `an ${DATA_TYPES.OBJECT}`, this.message)
     }
