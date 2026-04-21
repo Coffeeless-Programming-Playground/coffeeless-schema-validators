@@ -10,7 +10,7 @@ import {
   when,
   forbidden,
   optional
-} from 'coffeeless-schema-validators/dist'
+} from '@cofp/coffeeless-schema-validators/dist'
 import { Boy, ExcludeRecipients, User } from '../interfaces/user-interface'
 
 export const makeFailFastSchemaValidator = (): InputValidator => {

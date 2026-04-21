@@ -10,7 +10,7 @@ import {
   string,
   timestamp,
   when
-} from 'coffeeless-schema-validators/dist'
+} from '@cofp/coffeeless-schema-validators/dist'
 import { Boy, ExcludeRecipients, User } from '../interfaces/user-interface'
 
 export const makeStandardSchemaValidator = (): InputValidator => {
