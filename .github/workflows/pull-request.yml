@@ -31,7 +31,7 @@ jobs:
           npm link
           cd examples/express
           npm ci
-          npm link coffeeless-schema-validators
+          npm link @cofp/coffeeless-schema-validators
           cd ../..
 
       - name: Run unit and integration tests
