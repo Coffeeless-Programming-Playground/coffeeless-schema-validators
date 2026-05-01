@@ -1,3 +1,12 @@
+## [2.16.1](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/compare/v2.16.0...v2.16.1) (2026-05-01)
+
+
+### Bug Fixes
+
+* examples ([d62a87b](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/commit/d62a87b88051babd5e2a544c72ca459b8a93187f))
+
+
+
 # [2.16.0](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/compare/v2.15.0...v2.16.0) (2026-01-15)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * update package json ([ddcb2b1](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/commit/ddcb2b1a5cc739310f5a502e894faec5fb5d8598))
-
-
-
-# [2.14.0](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/compare/v2.13.0...v2.14.0) (2025-11-19)
-
-
-### Features
-
-* update test debug ([d676bb5](https://github.com/Coffeeless-Programming-Playground/coffeeless-schema-validators/commit/d676bb510fff36031c867829f854c3a3b0e16baf))
 
 
 
