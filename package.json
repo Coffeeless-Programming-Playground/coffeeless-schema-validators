@@ -1,7 +1,7 @@
 {
   "name": "@cofp/coffeeless-schema-validators",
   "description": "An schema validation package made with love by Coffeeless Programming",
-  "version": "2.16.1",
+  "version": "2.16.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
